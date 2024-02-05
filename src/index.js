@@ -2,7 +2,7 @@ window.container = document.getElementById('container')
 window.search = document.getElementById('search')
 window.links = document.getElementById('links')
 window.output = document.getElementById('text')
-window.heading = document.getElementById('text')
+window.heading = document.getElementById('heading')
 
 let data = []
 let paths = []
@@ -21,6 +21,7 @@ fetch('https://flippont.github.io/test/src/paths.json')
     .then((response) => response.json())
     .then((json) => {
         paths = json;
+        init()
     });
 
 
