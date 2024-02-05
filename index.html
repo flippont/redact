@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled Learning App</title>
+    <title>Untitled Notes App</title>
 </head>
 <body>
-    <div id="container">
+    <link rel="stylesheet" href="./src/style.css">
+    <div class="nav">
+        <div class="links" id="links">
+        </div>
     </div>
+    <div class="main">
+        <div class="container">
+            <h1 id="heading">Untitled Notes App</h1>
+            <input type="text" id="search" class="search" placeholder="Search...">
+            <div id="text"></div>
+            <div id="container">
+                Loading...
+            </div>
+        </div>
+    </div>
+
     <script src="./src/index.js"></script>
 </body>
 </html>
