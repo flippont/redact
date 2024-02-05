@@ -1,0 +1,123 @@
+:root {
+    --background: #FFFDF1;
+    --borders: #F4F2E7;
+    --hover: #F2F0E4;
+}
+
+html,
+body {
+  top: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+}
+h1 {
+    font-size: 17pt;
+    margin-top: 2pt;
+}
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}
+body {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  margin: 0 auto;
+  background-color: var(--background);
+}
+
+.nav {
+    width: 188pt;
+    border-right: 1.5pt solid var(--borders);
+    height: calc(100vh - 20pt);
+    overflow: auto;
+}
+.main {
+    overflow: auto;
+    height: calc(100vh - 20pt);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 210pt;
+    position: absolute;
+    width: calc(100% - 230pt);
+    padding: 10pt;
+}
+.container {
+    max-width: 500pt;
+    width: calc(100% - 15pt);
+    position: absolute;
+    left: 50%;
+    padding: 5pt;
+    transform: translate(-50%, 0%);
+}
+.list {
+    font-weight: bold;
+    margin-bottom: 5pt;
+    border-radius: 5pt;
+    cursor: pointer;
+    padding: 7pt;
+    width: calc(100% - 18pt);
+    vertical-align: baseline;
+}
+.list:focus {
+    outline: none;
+    background: var(--hover);
+}
+.list:hover {
+    background: var(--hover);
+}
+.active {
+    background: var(--hover);
+}
+
+.article {
+    margin-bottom: 5pt;
+    cursor: pointer;
+    padding: 7pt;
+    width: calc(100% - 18pt);
+    vertical-align: baseline;
+    border-bottom: 1.5pt solid var(--borders);
+}
+.links {
+    border-bottom: 1.5pt solid var(--borders);
+    padding: 10pt;
+}
+.search {
+    border: 1.5pt solid var(--borders);
+    font-size: 10pt;
+    background: var(--background);
+    outline: none;
+    margin-bottom: 5pt;
+    border-radius: 5pt;
+    width: calc(100% - 20pt);
+    padding: 7pt;
+
+}
+#text {
+    margin-top: 5pt;
+    height: 20pt;
+    margin-left: 5pt;
+}
+
+.colour {
+    border-radius: 10pt;
+    width: 10pt;
+    height: 10pt;
+    float: right;
+}
+
+
+.hidden {
+	display: none !important;
+}
+@media screen and (max-width: 750pt) {
+    .nav {
+        display: none;
+    }
+    .main {
+        left: 0;
+        width: calc(100% - 20pt);
+    }
+}
