@@ -1,8 +1,9 @@
 [
     {
-        "title": "sonnet",
+        "title": "William Shakespeare - Sonnet 18",
         "path": ["English", "Poetry"],
         "level": 2,
+        "url": "sonnet",
         "excerpt": "A deep dive of sonnet 18, one of the best known of the sonnets written by William Shakespeare",
         "author": "Miss Rawle"
     }
