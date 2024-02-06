@@ -36,55 +36,55 @@
         "path": ["English", "Drama"],
         "level": 3,
         "url": "romeo",
-        "excerpt": "A list of quotes from the play by William Shakespear, Romeo and Juliet",
+        "excerpt": "A list of quotes from the play by William Shakespear, Romeo and Juliet"
     },
     {
         "title": "An Aimsir Chaite (The Past Tense)",
         "path": ["Irish", "Grammar"],
         "level": 1,
         "url": "chaite",
-        "excerpt": "In Irish, the past tense, or 'Aimsir Chaite,' reflects actions that have already occurred.",
+        "excerpt": "In Irish, the past tense, or 'Aimsir Chaite,' reflects actions that have already occurred."
     },
     {
         "title": "An Aimsir Láithreach (The Present Tense)",
         "path": ["Irish", "Grammar"],
         "level": 1,
         "url": "laithreach",
-        "excerpt": "In Irish, the present tense, or 'Aimsir Láithreach,' reflects actions that are in the process of occuring.",
+        "excerpt": "In Irish, the present tense, or 'Aimsir Láithreach,' reflects actions that are in the process of occuring."
     },
     {
         "title": "An Aimsir Fháistineach (The Future Tense)",
         "path": ["Irish", "Grammar"],
         "level": 1,
         "url": "fhaistneach",
-        "excerpt": "Looking ahead, the future tense in Irish, known as 'Aimsir Fháistineach,' allows us to express actions that are yet to happen.",
+        "excerpt": "Looking ahead, the future tense in Irish, known as 'Aimsir Fháistineach,' allows us to express actions that are yet to happen."
     },
     {
         "title": "An Séimhiú agus an t-urú (Lenition and Eclipsis)",
         "path": ["Irish", "Grammar"],
         "level": 2,
         "url": "seimhiu",
-        "excerpt": "Séimhiú, or lenition, is the softening of a consonant sound, typically indicated by adding an 'h' after the initial consonant. On the other hand, t-urú, or eclipsis, involves the initial consonant of a word being replaced or eclipsed by another consonant sound.",
+        "excerpt": "Séimhiú, or lenition, is the softening of a consonant sound, typically indicated by adding an 'h' after the initial consonant. On the other hand, t-urú, or eclipsis, involves the initial consonant of a word being replaced or eclipsed by another consonant sound."
     },
     {
         "title": "An Modh Coinníollach (The Conditional Tense)",
         "path": ["Irish", "Grammar"],
         "level": 3,
         "url": "modh",
-        "excerpt": "Modh Coinníollach (Conditional Tense) is a verb form in Irish that expresses actions or events that may happen or are dependent on certain conditions.",
+        "excerpt": "Modh Coinníollach (Conditional Tense) is a verb form in Irish that expresses actions or events that may happen or are dependent on certain conditions."
     },
     {
         "title": "An Aidiacht Shealbhach (Possesive Adjectives)",
         "path": ["Irish", "Grammar"],
         "level": 3,
         "url": "aidiacht",
-        "excerpt": "The Aidiacht shealbhach in Irish, also known as the possessive adjective, is a word that shows ownership or possession. It's like saying my, your, his, her, our, or their in English.",
+        "excerpt": "The Aidiacht shealbhach in Irish, also known as the possessive adjective, is a word that shows ownership or possession. It's like saying my, your, his, her, our, or their in English."
     },
     {
         "title": "Caol agus Leathan (Slender and Broad)",
         "path": ["Irish", "Grammar"],
         "level": 1,
         "url": "aidiacht",
-        "excerpt": "Here, you will learn a way to group Irish verbs based on it's last vowel",
+        "excerpt": "Here, you will learn a way to group Irish verbs based on it's last vowel"
     }
 ]
