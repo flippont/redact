@@ -32,6 +32,7 @@ let html = {
         exit: [window.search, window.output],
         onenter: () => {
             currentPath = []
+            window.heading.innerHTML = 'Untitled Notes App'
             window.output.innerHTML = '';
             window.search.onkeydown = (event) => {
                 if(event.key == 'Enter') {
@@ -48,6 +49,7 @@ let html = {
         enter: [window.search, window.output],
         exit: [window.search, window.output],
         onenter: () => {
+            window.heading.innerHTML = 'Untitled Notes App'
             window.search.onkeydown = (event) => {
                 if(event.key == 'Enter') {
                     changePage('search')
@@ -59,11 +61,11 @@ let html = {
     'article' : {
         onenter: () => {
             window.container.innerHTML = 'Loading...'
-            fetch('https://flippont.github.io/test/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage + '.html')
+            fetch('https://flippont.github.io/test/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage.url + '.html')
             .then((response) => response.text())
             .then((text) => {
                 window.container.innerHTML = text
-                window.heading.innerHTML = currentPage
+                window.heading.innerHTML = currentPage.title
             })
         }
     },
@@ -157,14 +159,14 @@ function drawCard(data) {
     articleItem.tabIndex = '0'
     articleItem.onkeyup = (event) => {
         if(event.key == 'Enter') {
-            currentPage = data.title
+            currentPage = {url: data.url, title: data.title}
             currentPath = findPath(data.path, paths, 0, [], 'name')
             console.log(currentPath)
             changePage('article')
         }
     }
     articleItem.onclick = () => {
-        currentPage = data.title
+        currentPage = {url: data.url, title: data.title}
         currentPath = findPath(data.path, paths, 0, [], 'name')
         changePage('article')
     }
