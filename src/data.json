@@ -100,5 +100,12 @@
         "level": 1,
         "url": "powers",
         "excerpt": "Powers are a way to write repeated multiplications, and roots are numbers that have a square that is equal to the number"
+    },
+    {
+        "title": "Algebraic Equations",
+        "path": ["Maths", "Algebra"],
+        "level": 1,
+        "url": "equation",
+        "excerpt": "Algebraic Equations are equations that have letters in them, like a + 12, 10 × b, or x + y + z."
     }
 ]
