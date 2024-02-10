@@ -88,6 +88,13 @@
         "excerpt": "Here, you will learn a way to group Irish verbs based on it's last vowel"
     },
     {
+        "title": "Na Briathra neamhrialta (Irregular Verbs)",
+        "path": ["Irish", "Grammar"],
+        "level": 1,
+        "url": "irregular",
+        "excerpt": "There are 11 irregular verbs to remember in Irish, which change the root depending on the tense."
+    },
+    {
         "title": "Negative Numbers",
         "path": ["Maths", "Basics"],
         "level": 1,
