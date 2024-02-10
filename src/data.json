@@ -107,5 +107,12 @@
         "level": 1,
         "url": "equation",
         "excerpt": "Algebraic Equations are equations that have letters in them, like a + 12, 10 × b, or x + y + z."
+    },
+    {
+        "title": "Factorising and Expanding brackets",
+        "path": ["Maths", "Algebra"],
+        "level": 1,
+        "url": "factorise",
+        "excerpt": "Expanding brackets involves multiplying every term inside the bracket by the term that is outside of the bracket. Factorising is the opposite of expanding brackets."
     }
 ]
