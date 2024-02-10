@@ -95,6 +95,27 @@
         "excerpt": "There are 11 irregular verbs to remember in Irish, which change the root depending on the tense."
     },
     {
+        "title": "Na Daitheanna (The Colours)",
+        "path": ["Irish", "Vocabulary"],
+        "level": 1,
+        "url": "daitheanna",
+        "excerpt": "A short list of 24 colours/colour related words in Irish."
+    },
+    {
+        "title": "Briathair (Verbs)",
+        "path": ["Irish", "Vocabulary"],
+        "level": 1,
+        "url": "briathair",
+        "excerpt": "A list of 57 verb roots in Irish."
+    },
+    {
+        "title": "Na Contaetha (The Counties)",
+        "path": ["Irish", "Vocabulary"],
+        "level": 1,
+        "url": "contaetha",
+        "excerpt": "A list of all 32 counties in Irish."
+    },
+    {
         "title": "Negative Numbers",
         "path": ["Maths", "Basics"],
         "level": 1,
@@ -121,5 +142,89 @@
         "level": 1,
         "url": "factorise",
         "excerpt": "Expanding brackets involves multiplying every term inside the bracket by the term that is outside of the bracket. Factorising is the opposite of expanding brackets."
+    },
+    {
+        "title": "The Historian",
+        "path": ["History"],
+        "level": 1,
+        "url": "historian",
+        "excerpt": "Learn the basic key words that are used by Historians"
+    },
+    {
+        "title": "The Archaeologist",
+        "path": ["History"],
+        "level": 1,
+        "url": "archaeologist",
+        "excerpt": "Learn the basic key words that are used by Archaeologists"
+    },
+    {
+        "title": "Ancient Ireland",
+        "path": ["History"],
+        "level": 1,
+        "url": "ancient",
+        "excerpt": "The <strong>stone</strong>, (Mesolithic and Neolithic periods) and <strong>bronze age</strong> are the prehistoric (before recorded history) eras of Ireland."
+    },
+    {
+        "title": "Ancient Rome",
+        "path": ["History"],
+        "level": 1,
+        "url": "rome",
+        "excerpt": "Rome was the most powerful empire in the ancient world"
+    },
+    {
+        "title": "Life and Death in the medieval times",
+        "path": ["History"],
+        "level": 1,
+        "url": "medieval",
+        "excerpt": "People lived in a feudal system in the Middle Ages, meaning that the social hierarchy was very strict with most of the population being peasants."
+    },
+    {
+        "title": "Medieval Ireland",
+        "path": ["History"],
+        "level": 1,
+        "url": "middle",
+        "excerpt": "The Middle Ages in Ireland had a lot of conflict, as the Vikings and the Normans came into Ireland and had a huge impact."
+    },
+    {
+        "title": "The Rennaisance",
+        "path": ["History"],
+        "level": 1,
+        "url": "rennaisance",
+        "excerpt": "The renaissance was a Golden age in History that started in Italy."
+    },
+    {
+        "title": "Measurement",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "measurement",
+        "excerpt": "All scientists use the international system of measurement, <strong>SI</strong>, also known as the metric system."
+    },
+    {
+        "title": "Density",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "density",
+        "excerpt": "Density is the mass per unit volume (Amount of mass that is condensed in an area of space)"
+    },
+    {
+        "title": "Motion",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "speed",
+        "excerpt": "Speed is the rate in which an object is moving."
+    },
+    {
+        "title": "Force",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "speed",
+        "excerpt": "Force is the push or pull on an object with mass, which causes it to change its velocity."
+    },
+    {
+        "title": "Electricity",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "electricity",
+        "excerpt": "Electricity is the result of the movement of electrons, which have a negative charge."
     }
 ]
