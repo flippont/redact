@@ -7,22 +7,21 @@ window.heading = document.getElementById('heading')
 let data = []
 let paths = []
 let currentPath = []
-let completed = [
-    'sonnet'
-]
+let completed = []
 
 fetch('https://flippont.github.io/test/src/data.json')
     .then((response) => response.json())
     .then((json) => {
         data = json;
+        fetch('https://flippont.github.io/test/src/paths.json')
+            .then((response) => response.json())
+            .then((json) => {
+                paths = json;
+                init()
+            });
     });
 
-fetch('https://flippont.github.io/test/src/paths.json')
-    .then((response) => response.json())
-    .then((json) => {
-        paths = json;
-        init()
-    });
+
 
 
 
@@ -104,7 +103,7 @@ function findArticle(term) {
     window.container.innerHTML = '';
     for(let i = 0; i < data.length; i++) {
         let container = data[i].title + data[i].excerpt;
-        if(container.includes(term)) {
+        if(container.toLowerCase().includes(term.toLowerCase())) {
             matches += 1;
             window.container.appendChild(drawCard(data[i]))
         }
@@ -148,8 +147,8 @@ function findPath (path, createdPath, subdivision, finalPath, type) {
 function drawCard(data) {
     let articleItem = document.createElement('div')
     articleItem.innerHTML = `
-    <h1>${data.title}</h1>
-    <p style='color: gray'>${data.author}</p>
+    <h2>${data.title}</h2>
+    ${(data.author) ? '<p style="color: gray">' + data.author + '</p>' : ''}
     ${data.excerpt}
     <div class='colour' style='background-color: ${
         paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour
@@ -209,10 +208,16 @@ function renderLists (path) {
         list.push(currentPath[i])
         let calc = findPath(list, paths, 0, [], 'subs');
         let calcName = findPath(list, paths, 0, [], 'name');
-
+        element.tabIndex = "0"
         element.onclick = () => {
             currentPath = calcName;
             renderLists(calc[calc.length-1]);
+        }
+        element.onkeydown = (event) => {
+            if(event.key == "Enter") {
+                currentPath = calcName;
+                renderLists(calc[calc.length-1]);
+            }
         }
         
         window.output.appendChild(element)
