@@ -3,9 +3,7 @@
         "name": "English",
         "colour": "#ef476f",
         "subs": [
-            {
-            "name": "Poetry"
-            },
+            { "name": "Poetry" },
             { "name": "Grammar" },
             { "name": "Literature" },
             { "name": "Drama" },
@@ -28,15 +26,9 @@
     "name": "Maths",
     "colour": "#1b9aaa",
     "subs": [
+        { "name": "Basics" },
         { "name": "Trigonometry" },
-        {
-        "name": "Algebra",
-        "subs": [
-            { "name": "Factorising" },
-            { "name": "Fractions" },
-            { "name": "Equations" }
-        ]
-        },
+        { "name": "Algebra" },
         { "name": "Sets" },
         { "name": "Functions" },
         { "name": "Geometry" },
