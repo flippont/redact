@@ -93,5 +93,12 @@
         "level": 1,
         "url": "negative",
         "excerpt": "Negative numbers are numbers that are smaller than 0"
+    },
+    {
+        "title": "Powers and Roots",
+        "path": ["Maths", "Basics"],
+        "level": 1,
+        "url": "powers",
+        "excerpt": "Powers are a way to write repeated multiplications, and roots are numbers that have a square that is equal to the number"
     }
 ]
