@@ -98,8 +98,10 @@ body {
 
 table { 
     margin-top: 14pt;
-    width: 100%; 
-    border-collapse: collapse; 
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
 }
 tr{
     background: #f6f6f6;
@@ -111,9 +113,19 @@ th {
     background: #ea6153;
     text-align: left;
     color: #fff;
+    resize: horizontal;
 }
+th::-webkit-resizer {
+    background-color: transparent;
+    padding: 20px;
+}
+
 td, th {
     padding: 7pt 14pt 7pt 14pt;
+    text-overflow:clip;
+}
+.table {
+    overflow: auto;
 }
 #text {
     margin-top: 5pt;
