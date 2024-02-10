@@ -84,7 +84,14 @@
         "title": "Caol agus Leathan (Slender and Broad)",
         "path": ["Irish", "Grammar"],
         "level": 1,
-        "url": "aidiacht",
+        "url": "caol",
         "excerpt": "Here, you will learn a way to group Irish verbs based on it's last vowel"
+    },
+    {
+        "title": "Negative Numbers",
+        "path": ["Maths", "Basics"],
+        "level": 1,
+        "url": "negative",
+        "excerpt": "Negative numbers are numbers that are smaller than 0"
     }
 ]
