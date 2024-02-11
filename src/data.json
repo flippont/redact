@@ -144,6 +144,13 @@
         "excerpt": "Expanding brackets involves multiplying every term inside the bracket by the term that is outside of the bracket. Factorising is the opposite of expanding brackets."
     },
     {
+        "title": "Trigonometric ratios",
+        "path": ["Maths", "Trigonometry"],
+        "level": 1,
+        "url": "ratios",
+        "excerpt": "Trigonometric ratios are the ratios of the lengths of sides of a right-angled triangle."
+    },
+    {
         "title": "The Historian",
         "path": ["History"],
         "level": 1,
