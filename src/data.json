@@ -116,6 +116,13 @@
         "excerpt": "A list of all 32 counties in Irish."
     },
     {
+        "title": "An Aidiachhtaí (The Adjectives)",
+        "path": ["Irish", "Vocabulary"],
+        "level": 1,
+        "url": "adjectives",
+        "excerpt": "A short list of 32 important adjectives in Irish."
+    },
+    {
         "title": "Negative Numbers",
         "path": ["Maths", "Basics"],
         "level": 1,
