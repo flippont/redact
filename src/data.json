@@ -116,6 +116,13 @@
         "excerpt": "A list of all 32 counties in Irish."
     },
     {
+        "title": "An Aidiachhtaí (The Adjectives)",
+        "path": ["Irish", "Vocabulary"],
+        "level": 1,
+        "url": "adjectives",
+        "excerpt": "A short list of 32 important adjectives in Irish."
+    },
+    {
         "title": "Negative Numbers",
         "path": ["Maths", "Basics"],
         "level": 1,
@@ -142,6 +149,27 @@
         "level": 1,
         "url": "factorise",
         "excerpt": "Expanding brackets involves multiplying every term inside the bracket by the term that is outside of the bracket. Factorising is the opposite of expanding brackets."
+    },
+    {
+        "title": "Trigonometric ratios",
+        "path": ["Maths", "Trigonometry"],
+        "level": 1,
+        "url": "ratios",
+        "excerpt": "Trigonometric ratios are the ratios of the lengths of sides of a right-angled triangle."
+    },
+    {
+        "title": "Sets",
+        "path": ["Maths", "Sets"],
+        "level": 1,
+        "url": "sets",
+        "excerpt": "A set is a collection of things. The “things” that make up a set is called an element."
+    },
+    {
+        "title": "Functions",
+        "path": ["Maths", "Functions"],
+        "level": 1,
+        "url": "functions",
+        "excerpt": "A function is a relationship between numbers, where if one number is changed, another will change alongside it. "
     },
     {
         "title": "The Historian",
