@@ -151,6 +151,20 @@
         "excerpt": "Trigonometric ratios are the ratios of the lengths of sides of a right-angled triangle."
     },
     {
+        "title": "Sets",
+        "path": ["Maths", "Sets"],
+        "level": 1,
+        "url": "sets",
+        "excerpt": "A set is a collection of things. The “things” that make up a set is called an element."
+    },
+    {
+        "title": "Functions",
+        "path": ["Maths", "Functions"],
+        "level": 1,
+        "url": "functions",
+        "excerpt": "A function is a relationship between numbers, where if one number is changed, another will change alongside it. "
+    },
+    {
         "title": "The Historian",
         "path": ["History"],
         "level": 1,
