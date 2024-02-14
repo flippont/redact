@@ -61,3 +61,25 @@
     poem: <strong>the natural response to a question is to anticipate an answer, and so the reader is anticipating the
         next line of the poem.</strong>
 </p>
+<div class="quiz">
+    <h2>Quiz</h2>
+    <div class="questions" id="question-0">
+        <legend>What is the best Hawthorn album?</legend>
+        <input type="radio" id="embers" name="answer-0" value="wrong"><label for="embers">Embers</label><br>
+        <input type="radio" id="another" name="answer-0" value="wrong"><label for="another">Another Day</label><br>
+        <input type="radio" id="run" name="answer-0" value="correct"><label for="run">Run To Me</label><br>
+    </div>
+    <div class="questions" id="question-1">
+        <legend>What is the second best Hawthorn album?</legend>
+        <input type="radio" id="embers-1" name="answer-1" value="wrong"><label for="embers-1">Embers</label><br>
+        <input type="radio" id="another-1" name="answer-1" value="correct"><label for="another-1">Another Day</label><br>
+        <input type="radio" id="run-1" name="answer-1" value="wrong"><label for="run-1">Run To Me</label><br>
+    </div>
+    <br>
+    <button class="submit" onclick="return getResults(0);" type="submit">
+        Submit</button>
+    <button class="submit" onclick="return reset(0);">
+            Reset</button>
+    <h2>Results</h2>
+    <p id="results"></p>
+</div>
