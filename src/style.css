@@ -10,13 +10,9 @@ body {
   position: absolute;
   right: 0px;
   left: 0px;
+  height: 100vh;
 }
 
-a:hover{
-    cursor: pointer;
-    text-decoration: underline;
-    user-select: none;
-}
 body {
   font-family: Consolas,monaco,monospace; 
   font-size: 11pt;  
@@ -25,14 +21,19 @@ body {
   font-weight: 100;
 }
 
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}
+
 .nav {
     width: 188pt;
     border-right: 1.5pt solid var(--borders);
-    height: calc(100vh - 20pt);
-    overflow: auto;
+    height: 100vh;
+    position: fixed;
 }
 .main {
-    overflow: auto;
     height: calc(100vh - 20pt);
     display: block;
     position: absolute;
@@ -96,6 +97,68 @@ body {
 
 }
 
+label {
+    display: flex;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 2pt;
+    overflow: hidden;
+}
+label::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+input[type="radio"] {
+    box-sizing: border-box;
+    width: 5pt;
+    height: 5pt;
+    margin: 5pt;
+    padding: 0;
+    margin-right: 10pt;
+    border-radius: 50%;
+    appearance: none;
+    background-color: #ddd;
+    outline: none;
+    cursor: pointer;
+    border: 2pt solid none;
+}
+input[type="radio"]:not(:disabled):checked {
+    background-color: #000;
+    padding: 2pt;
+}
+input[type="radio"]:disabled:checked {
+    background-color: #fff;
+    padding: 2pt;
+}
+label:has(input[type="radio"]:disabled), input[type="radio"]:disabled {
+    cursor: default;
+}
+legend {
+    margin-bottom: 10pt;
+}
+
+.questions {
+    padding: 10pt;
+    border-radius: 5pt;
+    margin-top: 10pt;
+    color: #000;
+    background: var(--borders);
+}
+
+.submit {
+    padding: 7pt 10pt 7pt 10pt;
+    border-radius: 5pt;
+    border: none;
+    font-family: Consolas,monaco,monospace;
+    background: var(--borders);
+    cursor: pointer;
+}
 table { 
     margin-top: 14pt;
     width: 100%;
