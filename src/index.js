@@ -9,6 +9,10 @@ let paths = []
 let currentPath = []
 let completed = []
 
+if(localStorage.getItem('completed')) {
+    completed = JSON.parse(localStorage.getItem('completed'))
+}
+
 fetch('https://flippont.github.io/test/src/data.json')
     .then((response) => response.json())
     .then((json) => {
@@ -21,12 +25,8 @@ fetch('https://flippont.github.io/test/src/data.json')
             });
     });
 
-
-
-
-
 let html = {
-    'home' : {
+    'home': {
         enter: [window.search, window.output],
         exit: [window.search, window.output],
         onenter: () => {
@@ -34,7 +34,7 @@ let html = {
             window.heading.innerHTML = 'Untitled Notes App'
             window.output.innerHTML = '';
             window.search.onkeydown = (event) => {
-                if(event.key == 'Enter') {
+                if (event.key == 'Enter') {
                     changePage('search')
                 }
             }
@@ -44,36 +44,40 @@ let html = {
             window.search.value = ''
         }
     },
-    'search' : {
+    'search': {
         enter: [window.search, window.output],
         exit: [window.search, window.output],
         onenter: () => {
             window.heading.innerHTML = 'Untitled Notes App'
             window.search.onkeydown = (event) => {
-                if(event.key == 'Enter') {
+                if (event.key == 'Enter') {
                     changePage('search')
                 }
             }
             findArticle(window.search.value)
         }
     },
-    'article' : {
+    'article': {
         onenter: () => {
             window.container.innerHTML = 'Loading...'
             fetch('https://flippont.github.io/test/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage.url + '.html')
-            .then((response) => response.text())
-            .then((text) => {
-                window.container.innerHTML = text
-                window.heading.innerHTML = currentPage.title
-            })
+                .then((response) => response.text())
+                .then((text) => {
+                    window.container.innerHTML = text
+                    window.heading.innerHTML = currentPage.title
+                    if(!completed.includes(currentPage.title)) {
+                        completed.push(currentPage.title)
+                        localStorage.setItem('completed', JSON.stringify(completed))
+                    }
+                })
         }
     },
-    'list' : {
+    'list': {
         enter: [window.search],
         exit: [window.search],
         onenter: () => {
             window.search.onkeydown = (event) => {
-                if(event.key == 'Enter') {
+                if (event.key == 'Enter') {
                     changePage('search')
                 }
             }
@@ -97,13 +101,60 @@ let links = [
     }
 ]
 
+function getResults(element) {
+    let amountCorrect = 0;
+    let container = document.getElementsByClassName('quiz')[element];
+    let total = Array.from(container.getElementsByClassName('questions'))
+    document.getElementsByClassName('submit')[element].disabled = true
+    for (let i = 0; i < total.length; i++) {
+        var radiosName = document.getElementsByName('answer-' + i);
+        for (let j = 0; j < radiosName.length; j++) {
+            let radiosValue = radiosName[j];
+            radiosValue.disabled = true
+            if (radiosValue.checked) {
+                document.getElementById('question-' + i).style.color = '#fff';
+                if (radiosValue.value == "correct") {
+                    amountCorrect++;
+                    document.getElementById('question-' + i).style.background = '#90be6d';
+                } else {
+                    document.getElementById('question-' + i).style.background = '#ef476f';
+                }
+            } else {
+                if(radiosValue.value == 'correct') {
+                    radiosValue.style.boxShadow = '0pt 0pt 0pt 10pt #1b9aaa inset'
+                }
+            }
+        }
+    }
+
+    document.getElementById('results').innerHTML =
+        'Score: ' + amountCorrect + '/' + total.length;
+    
+}
+function reset(element) {
+    let container = document.getElementsByClassName('quiz')[element];
+    let total = Array.from(container.getElementsByClassName('questions'))
+    document.getElementsByClassName('submit')[element].disabled = false
+    
+    for (let i = 0; i < total.length; i++) {
+        var radiosName = document.getElementsByName('answer-' + i);
+        for (let j = 0; j < radiosName.length; j++) {
+            radiosName[j].checked = false
+            radiosName[j].disabled = false
+            radiosName[j].style.boxShadow = 'none'
+            document.getElementById('question-' + i).style.background = getComputedStyle(document.documentElement).getPropertyValue('--borders');
+            document.getElementById('question-' + i).style.color = '#000';
+        }
+    }
+}
+
 function findArticle(term) {
-    if(term.length < 1) return false
+    if (term.length < 1) return false
     let matches = 0;
     window.container.innerHTML = '';
-    for(let i = 0; i < data.length; i++) {
-        let container = data[i].title + data[i].excerpt;
-        if(container.toLowerCase().includes(term.toLowerCase())) {
+    for (let i = 0; i < data.length; i++) {
+        let container = data[i].title + data[i].excerpt + data[i].path[0];
+        if (container.toLowerCase().includes(term.toLowerCase())) {
             matches += 1;
             window.container.appendChild(drawCard(data[i]))
         }
@@ -113,18 +164,18 @@ function findArticle(term) {
 
 let currentPage = ''
 
-function arraysEqual (a, b) {
+function arraysEqual(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;
     if (a.length !== b.length) return false;
-  
+
     for (var i = 0; i < a.length; ++i) {
-      if (a[i] !== b[i]) return false;
+        if (a[i] !== b[i]) return false;
     }
     return true;
-  }
+}
 
-function findPath (path, createdPath, subdivision, finalPath, type) {
+function findPath(path, createdPath, subdivision, finalPath, type) {
     for (let i = 0; i < createdPath.length; i++) {
         if (path[subdivision] == createdPath[i].name) {
             if (type == 'location') {
@@ -150,22 +201,21 @@ function drawCard(data) {
     <h2>${data.title}</h2>
     ${(data.author) ? '<p style="color: gray">' + data.author + '</p>' : ''}
     ${data.excerpt}
-    <div class='colour' style='background-color: ${
-        paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour
-    }'></div>
+    <div class='colour' style='background-color: ${paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour
+        }'></div>
     `;
     articleItem.className = 'article'
     articleItem.tabIndex = '0'
     articleItem.onkeyup = (event) => {
-        if(event.key == 'Enter') {
-            currentPage = {url: data.url, title: data.title}
+        if (event.key == 'Enter') {
+            currentPage = { url: data.url, title: data.title }
             currentPath = findPath(data.path, paths, 0, [], 'name')
             console.log(currentPath)
             changePage('article')
         }
     }
     articleItem.onclick = () => {
-        currentPage = {url: data.url, title: data.title}
+        currentPage = { url: data.url, title: data.title }
         currentPath = findPath(data.path, paths, 0, [], 'name')
         changePage('article')
     }
@@ -177,11 +227,11 @@ function calculatePercentage(listName) {
     for (const item of data) {
         if (!listName.includes(",") && item.path[0] == listName) {
             if (completed.includes(item.title)) {
-              itemNumber += 1;
+                itemNumber += 1;
             }
             totalNumber += 1;
-          }        
-          if (item.path == listName) {
+        }
+        if (item.path == listName) {
             if (completed.includes(item.title)) {
                 itemNumber += 1;
             }
@@ -194,11 +244,11 @@ function calculatePercentage(listName) {
     return Math.floor((itemNumber / totalNumber) * 100)
 }
 
-function renderLists (path) {
-    window.output.innerHTML = 
-    `<a onclick='changePage("home")'>Home</a>`
+function renderLists(path) {
+    window.output.innerHTML =
+        `<a onclick='changePage("home")'>Home</a>`
     let list = [];
-    for(let i=0; i < currentPath.length; i++) {
+    for (let i = 0; i < currentPath.length; i++) {
         let between = document.createElement('span');
         between.innerHTML = ' / ';
         window.output.appendChild(between);
@@ -211,15 +261,15 @@ function renderLists (path) {
         element.tabIndex = "0"
         element.onclick = () => {
             currentPath = calcName;
-            renderLists(calc[calc.length-1]);
+            renderLists(calc[calc.length - 1]);
         }
         element.onkeydown = (event) => {
-            if(event.key == "Enter") {
+            if (event.key == "Enter") {
                 currentPath = calcName;
-                renderLists(calc[calc.length-1]);
+                renderLists(calc[calc.length - 1]);
             }
         }
-        
+
         window.output.appendChild(element)
     }
 
@@ -231,17 +281,17 @@ function renderLists (path) {
         }
     }
 
-    if(!path) return true
+    if (!path) return true
 
     for (let i = 0; i < path.length; i++) {
-       
+
         let nestFile = document.createElement('div');
         nestFile.className = 'list'
         nestFile.tabIndex = '0'
-        nestFile.innerHTML = path[i].name; 
+        nestFile.innerHTML = path[i].name;
 
         nestFile.onkeyup = (event) => {
-            if(event.key == 'Enter') {
+            if (event.key == 'Enter') {
                 currentPath.push(path[i].name)
                 renderLists(path[i].subs)
             }
@@ -254,9 +304,9 @@ function renderLists (path) {
         let colour = document.createElement('div');
         colour.className = 'colour'
         colour.style.width = calculatePercentage(currentPath.join(",") + ((currentPath.length > 0) ? "," : "") + path[i].name) * 1.3 + 10 + 'pt'
-        colour.style.background = 
-        (path[i].colour) ? path[i].colour :
-        paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
+        colour.style.background =
+            (path[i].colour) ? path[i].colour :
+                paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
         nestFile.appendChild(colour)
         window.container.appendChild(nestFile)
     }
@@ -265,7 +315,7 @@ function renderLists (path) {
 let screen = 'home'
 let previousScreen = screen
 
-function changePage (newScene) {
+function changePage(newScene) {
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
             element.classList.add('hidden')
@@ -288,15 +338,15 @@ function changePage (newScene) {
     populateLinks()
 }
 
-function populateLinks () {
+function populateLinks() {
     window.links.innerHTML = '';
-    for(let i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i++) {
         let linkItem = document.createElement('div');
         linkItem.className = (screen == links[i].name.toLowerCase()) ? 'list active' : 'list'
         linkItem.innerHTML = links[i].name;
         linkItem.tabIndex = '0';
         linkItem.onkeyup = (event) => {
-            if(event.key == 'Enter') {
+            if (event.key == 'Enter') {
                 links[i].function()
             }
         }
@@ -306,8 +356,6 @@ function populateLinks () {
         window.links.appendChild(linkItem)
     }
 }
-
-
 
 init = () => {
     changePage('home')
