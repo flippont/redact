@@ -8,6 +8,7 @@ let data = []
 let paths = []
 let currentPath = []
 let completed = []
+let currentPage = ''
 
 if(localStorage.getItem('completed')) {
     completed = JSON.parse(localStorage.getItem('completed'))
@@ -30,7 +31,6 @@ let html = {
         enter: [window.search, window.output],
         exit: [window.search, window.output],
         onenter: () => {
-            currentPath = []
             window.heading.innerHTML = 'Untitled Notes App'
             window.output.innerHTML = '';
             window.search.onkeydown = (event) => {
@@ -63,6 +63,9 @@ let html = {
             fetch('https://flippont.github.io/test/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage.url + '.html')
                 .then((response) => response.text())
                 .then((text) => {
+                    if (state.path != currentPath) {
+                        state.current = currentPage
+                    }
                     window.container.innerHTML = text
                     window.heading.innerHTML = currentPage.title
                     if(!completed.includes(currentPage.title)) {
@@ -85,19 +88,42 @@ let html = {
             findArticle(' ')
         }
     },
+    'saved': {
+        
+    },
+    'settings': {
+        
+    },
     onexit: () => {
         window.search.value = ''
     }
 }
 
+let state = {
+    current: '',
+    page: 'home'
+};
+
 let links = [
     {
         name: 'Home',
-        function: changePage.bind(this, 'home')
+        function: () => {currentPath = []; changePage('home')}
     },
     {
         name: 'List',
         function: changePage.bind(this, 'list')
+    },
+    {
+        name: 'Search',
+        function: changePage.bind(this, 'search')
+    },
+    {
+        name: 'Saved',
+        function: changePage.bind(this, 'saved')
+    },
+    {
+        name: 'Settings',
+        function: changePage.bind(this, 'settings')
     }
 ]
 
@@ -161,8 +187,6 @@ function findArticle(term) {
     }
     window.output.innerHTML = matches + ' matches found.'
 }
-
-let currentPage = ''
 
 function arraysEqual(a, b) {
     if (a === b) return true;
@@ -245,6 +269,8 @@ function calculatePercentage(listName) {
 }
 
 function renderLists(path) {
+    state.path = path;
+
     window.output.innerHTML =
         `<a onclick='changePage("home")'>Home</a>`
     let list = [];
@@ -315,7 +341,11 @@ function renderLists(path) {
 let screen = 'home'
 let previousScreen = screen
 
-function changePage(newScene) {
+function changePage(newScene, popstate = false) {
+    if(popstate) {
+        state.page = newScene;
+        window.history.pushState(state, null, "https://flippont.github.io/test/");
+    }
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
             element.classList.add('hidden')
@@ -358,5 +388,15 @@ function populateLinks() {
 }
 
 init = () => {
+    currentPath = []
     changePage('home')
+}
+
+window.onpopstate = (event) => {
+    if (event.state) { state = event.state; }
+    if (state.page == "article") {
+        currentPage = state.current
+    }
+    currentPath = state.path
+    changePage(state.page, true)
 }
