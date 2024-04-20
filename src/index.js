@@ -39,9 +39,6 @@ let html = {
                 }
             }
             renderLists(paths)
-        },
-        onexit: () => {
-            window.search.value = ''
         }
     },
     'search': {
@@ -76,8 +73,6 @@ let html = {
         }
     },
     'list': {
-        enter: [window.search],
-        exit: [window.search],
         onenter: () => {
             window.search.onkeydown = (event) => {
                 if (event.key == 'Enter') {
@@ -89,13 +84,18 @@ let html = {
         }
     },
     'saved': {
-        
+        enter: [],
+        exit: [],
+        onenter: () => {
+            
+        }
     },
     'settings': {
-        
-    },
-    onexit: () => {
-        window.search.value = ''
+        enter: [],
+        exit: [],
+        onenter: () => {
+
+        }   
     }
 }
 
@@ -110,16 +110,16 @@ let links = [
         function: () => {currentPath = []; changePage('home')}
     },
     {
+        name: 'Saved',
+        function: changePage.bind(this, 'saved')
+    },
+    {
         name: 'List',
         function: changePage.bind(this, 'list')
     },
     {
         name: 'Search',
         function: changePage.bind(this, 'search')
-    },
-    {
-        name: 'Saved',
-        function: changePage.bind(this, 'saved')
     },
     {
         name: 'Settings',
@@ -139,7 +139,7 @@ function getResults(element) {
             radiosValue.disabled = true
             if (radiosValue.checked) {
                 document.getElementById('question-' + i).style.color = '#fff';
-                if (radiosValue.value == "correct") {
+                if (radiosValue.value == 'correct') {
                     amountCorrect++;
                     document.getElementById('question-' + i).style.background = '#90be6d';
                 } else {
@@ -175,7 +175,6 @@ function reset(element) {
 }
 
 function findArticle(term) {
-    if (term.length < 1) return false
     let matches = 0;
     window.container.innerHTML = '';
     for (let i = 0; i < data.length; i++) {
@@ -249,7 +248,7 @@ function calculatePercentage(listName) {
     let totalNumber = 0;
     let itemNumber = 0;
     for (const item of data) {
-        if (!listName.includes(",") && item.path[0] == listName) {
+        if (!listName.includes(',') && item.path[0] == listName) {
             if (completed.includes(item.title)) {
                 itemNumber += 1;
             }
@@ -272,7 +271,7 @@ function renderLists(path) {
     state.path = path;
 
     window.output.innerHTML =
-        `<a onclick='changePage("home")'>Home</a>`
+        `<a onclick='changePage('home')'>Home</a>`
     let list = [];
     for (let i = 0; i < currentPath.length; i++) {
         let between = document.createElement('span');
@@ -284,13 +283,13 @@ function renderLists(path) {
         list.push(currentPath[i])
         let calc = findPath(list, paths, 0, [], 'subs');
         let calcName = findPath(list, paths, 0, [], 'name');
-        element.tabIndex = "0"
+        element.tabIndex = '0'
         element.onclick = () => {
             currentPath = calcName;
             renderLists(calc[calc.length - 1]);
         }
         element.onkeydown = (event) => {
-            if (event.key == "Enter") {
+            if (event.key == 'Enter') {
                 currentPath = calcName;
                 renderLists(calc[calc.length - 1]);
             }
@@ -329,7 +328,7 @@ function renderLists(path) {
 
         let colour = document.createElement('div');
         colour.className = 'colour'
-        colour.style.width = calculatePercentage(currentPath.join(",") + ((currentPath.length > 0) ? "," : "") + path[i].name) * 1.3 + 10 + 'pt'
+        colour.style.width = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * 1.3 + 10 + 'pt'
         colour.style.background =
             (path[i].colour) ? path[i].colour :
                 paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
@@ -344,7 +343,7 @@ let previousScreen = screen
 function changePage(newScene, popstate = false) {
     if(popstate) {
         state.page = newScene;
-        window.history.pushState(state, null, "https://flippont.github.io/test/");
+        window.history.pushState(state, null, 'https://flippont.github.io/test?s=' + newScene.toLowerCase() + '?p=' + currentPath.toLowerCase().join(','));
     }
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
@@ -389,14 +388,26 @@ function populateLinks() {
 
 init = () => {
     currentPath = []
+    window.history.replaceState(state, null, "https://flippont.github.io/world");
     changePage('home')
 }
 
 window.onpopstate = (event) => {
     if (event.state) { state = event.state; }
-    if (state.page == "article") {
+    if (state.page == 'article') {
         currentPage = state.current
     }
     currentPath = state.path
     changePage(state.page, true)
 }
+
+let scrolling = false
+document.onscroll = async function(ev) {
+    if ((window.innerHeight + document.documentElement.scrollTop) >= document.body.offsetHeight - 1000) {
+        let offset = output.childElementCount
+        if (scrolling || offset < 50 || offset % 50 !== 0) return
+        scrolling = true
+        
+        scrolling = false
+    }
+};
