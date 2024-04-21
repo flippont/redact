@@ -388,7 +388,7 @@ function populateLinks() {
 
 init = () => {
     currentPath = []
-    window.history.replaceState(state, null, "https://flippont.github.io/world");
+    window.history.replaceState(state, null, 'https://flippont.github.io/test?s=home?p=null');
     changePage('home')
 }
 
