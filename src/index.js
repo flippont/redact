@@ -131,10 +131,6 @@ let links = [
     }
 ]
 
-function createButtons() {
-    
-}
-
 function getResults(element) {
     let amountCorrect = 0;
     let container = document.getElementsByClassName('quiz')[element];
@@ -277,8 +273,8 @@ function calculatePercentage(listName) {
 
 function renderLists(path, popstate = false) {
     if(!popstate) {
-        state.path = path;
-        window.history.pushState(state, null, 'https://flippont.github.io/test?p=' + path.join(','))
+        state.path = currentPath;
+        window.history.pushState(state, null, 'https://flippont.github.io/test?p=' + currentPath.join(','))
     }
 
     window.output.innerHTML =
