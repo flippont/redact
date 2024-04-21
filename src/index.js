@@ -397,7 +397,11 @@ function populateLinks() {
 init = () => {
     currentPath = []
     window.history.replaceState(state, null, loc);
-    changePage(params.get('s'))
+    if(params.get('s')) {
+        changePage(params.get('s'), true)
+    } else {
+        changePage('home', true)
+    }
     if(params.get('n')) {
         currentPage = params.get('n')
     }
