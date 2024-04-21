@@ -271,7 +271,7 @@ function calculatePercentage(listName) {
 function renderLists(path, popstate = false) {
     if(!popstate) {
         state.path = currentPath;
-        window.history.pushState(state, null, 'https://flippont.github.io/test/?p=' + currentPath.join(','))
+        window.history.pushState(state, null, 'https://flippont.github.io/test/?s=home&p=' + currentPath.join(','))
     }
 
     window.output.innerHTML =
