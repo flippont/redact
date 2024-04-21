@@ -4,7 +4,7 @@ window.links = document.getElementById('links')
 window.output = document.getElementById('text')
 window.heading = document.getElementById('heading')
 
-let location = window.location.href
+let location = location.href
 let params = location.searchParams
 
 console.log(location, params)
