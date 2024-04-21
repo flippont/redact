@@ -4,6 +4,10 @@ window.links = document.getElementById('links')
 window.output = document.getElementById('text')
 window.heading = document.getElementById('heading')
 
+let location = window.location.href
+let params = location.searchParams
+
+console.log(location, params)
 let data = []
 let paths = []
 let currentPath = []
@@ -267,11 +271,14 @@ function calculatePercentage(listName) {
     return Math.floor((itemNumber / totalNumber) * 100)
 }
 
-function renderLists(path) {
-    state.path = path;
+function renderLists(path, popstate = false) {
+    if(!popstate) {
+        state.path = path;
+        window.history.pushState(state, null, 'https://flippont.github.io/test?p=' + path.join(','))
+    }
 
     window.output.innerHTML =
-        `<a onclick='changePage('home')'>Home</a>`
+        `<a onclick="changePage('home')">Home</a>`
     let list = [];
     for (let i = 0; i < currentPath.length; i++) {
         let between = document.createElement('span');
@@ -341,9 +348,9 @@ let screen = 'home'
 let previousScreen = screen
 
 function changePage(newScene, popstate = false) {
-    if(popstate) {
+    if(!popstate) {
         state.page = newScene;
-        window.history.pushState(state, null, 'https://flippont.github.io/test?s=' + newScene.toLowerCase() + '?p=' + currentPath.toLowerCase().join(','));
+        window.history.pushState(state, null, 'https://flippont.github.io/test?s=' + newScene.toLowerCase());
     }
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
@@ -388,8 +395,16 @@ function populateLinks() {
 
 init = () => {
     currentPath = []
-    window.history.replaceState(state, null, 'https://flippont.github.io/test?s=home?p=null');
-    changePage('home')
+    window.history.replaceState(state, null, location);
+    if(params.get('q')) {
+        changePage('home')
+        renderLists(params.get('s').split(','))
+    } else if(params.get('s')) {
+        changePage(params.get('s'))
+    } else {
+        changePage('home')
+    }
+    
 }
 
 window.onpopstate = (event) => {
@@ -399,6 +414,9 @@ window.onpopstate = (event) => {
     }
     currentPath = state.path
     changePage(state.page, true)
+    if(state.page == 'home' && currentPath != []) {
+        renderLists(state.path, true)
+    }
 }
 
 let scrolling = false
