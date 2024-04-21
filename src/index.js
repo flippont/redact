@@ -4,7 +4,7 @@ window.links = document.getElementById('links')
 window.output = document.getElementById('text')
 window.heading = document.getElementById('heading')
 
-let loc = location.href
+let loc = new URL(location.href)
 let params = loc.searchParams
 
 console.log(loc, params)
@@ -130,6 +130,10 @@ let links = [
         function: changePage.bind(this, 'settings')
     }
 ]
+
+function createButtons() {
+    
+}
 
 function getResults(element) {
     let amountCorrect = 0;
