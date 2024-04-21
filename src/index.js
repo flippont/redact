@@ -405,8 +405,8 @@ init = () => {
     if(params.get('n')) {
         currentPage = params.get('n')
     }
-    if(params.get('q')) {
-        renderLists(params.get('q').split(','))
+    if(params.get('p')) {
+        renderLists(params.get('p').split(','))
     }
 }
 
