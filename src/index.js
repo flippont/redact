@@ -355,7 +355,7 @@ function changePage(newScene, popstate = false) {
             state.current = currentPage
         }
         window.history.pushState(state, null, 'https://flippont.github.io/untitled-notes-app/?s=' + newScene.toLowerCase() 
-         + ((newScene == 'article') ? '&n=' + currentPage.join(',') : ''));
+         + ((newScene == 'article') ? '&n=' + currentPage.url + '&t=' + currentPage.title : ''));
     }
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
@@ -407,7 +407,7 @@ init = () => {
         changePage('home', true)
     }
     if(params.get('n')) {
-        currentPage = params.get('n').split(',')
+        currentPage = {url: params.get('n'), title: params.get('t')}
     }
     if(params.get('p')) {
         renderLists(params.get('p').split(','))
