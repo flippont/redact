@@ -18,11 +18,11 @@ if(localStorage.getItem('completed')) {
     completed = JSON.parse(localStorage.getItem('completed'))
 }
 
-fetch('https://flippont.github.io/test/src/data.json')
+fetch('https://flippont.github.io/untitled-notes-app/src/data.json')
     .then((response) => response.json())
     .then((json) => {
         data = json;
-        fetch('https://flippont.github.io/test/src/paths.json')
+        fetch('https://flippont.github.io/untitled-notes-app/src/paths.json')
             .then((response) => response.json())
             .then((json) => {
                 paths = json;
@@ -61,7 +61,7 @@ let html = {
     'article': {
         onenter: () => {
             window.container.innerHTML = 'Loading...'
-            fetch('https://flippont.github.io/test/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage.url + '.html')
+            fetch('https://flippont.github.io/untitled-notes-app/src/pages/' + currentPath.join('/').toLowerCase() + '/' + currentPage.url + '.html')
                 .then((response) => response.text())
                 .then((text) => {
                     window.container.innerHTML = text
@@ -275,7 +275,7 @@ function calculatePercentage(listName) {
 function renderLists(path, popstate = false) {
     if(!popstate) {
         state.path = currentPath;
-        window.history.pushState(state, null, 'https://flippont.github.io/test/?s=home&p=' + currentPath.join(','))
+        window.history.pushState(state, null, 'https://flippont.github.io/untitled-notes-app/?s=home&p=' + currentPath.join(','))
     }
 
     window.output.innerHTML =
@@ -354,7 +354,7 @@ function changePage(newScene, popstate = false) {
         if(newScene == 'article') {
             state.current = currentPage
         }
-        window.history.pushState(state, null, 'https://flippont.github.io/test/?s=' + newScene.toLowerCase() 
+        window.history.pushState(state, null, 'https://flippont.github.io/untitled-notes-app/?s=' + newScene.toLowerCase() 
          + ((newScene == 'article') ? '&n=' + currentPage.join(',') : ''));
     }
     if (html[screen] && html[screen].exit) {
