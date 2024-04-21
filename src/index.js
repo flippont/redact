@@ -42,7 +42,7 @@ let html = {
                     changePage('search')
                 }
             }
-            renderLists(paths)
+            renderLists(paths, true)
         }
     },
     'search': {
@@ -88,7 +88,11 @@ let html = {
         enter: [],
         exit: [],
         onenter: () => {
+            window.container.innerHTML = `
+            <h2>Saved Articles</h2>
+            Sort by:
             
+            `
         }
     },
     'settings': {
@@ -351,7 +355,7 @@ function changePage(newScene, popstate = false) {
             state.current = currentPage
         }
         window.history.pushState(state, null, 'https://flippont.github.io/test/?s=' + newScene.toLowerCase() 
-         + ((newScene == 'article') ? '&n=' + currentPage : ''));
+         + ((newScene == 'article') ? '&n=' + currentPage.join(',') : ''));
     }
     if (html[screen] && html[screen].exit) {
         for (let element of html[screen].exit) {
@@ -403,7 +407,7 @@ init = () => {
         changePage('home', true)
     }
     if(params.get('n')) {
-        currentPage = params.get('n')
+        currentPage = params.get('n').split(',')
     }
     if(params.get('p')) {
         renderLists(params.get('p').split(','))

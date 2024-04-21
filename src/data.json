@@ -186,10 +186,31 @@
         "excerpt": "Learn the basic key words that are used by Archaeologists"
     },
     {
+        "title": "Early Christian Ireland",
+        "path": ["History"],
+        "level": 1,
+        "url": "erl-christian",
+        "excerpt": "Early Christian Ireland was the period when Christianity first came to Ireland from a bishop named Palladius"
+    },
+    {
+        "title": "Early Christian Ireland",
+        "path": ["History"],
+        "level": 1,
+        "url": "erl-christian",
+        "excerpt": "Early Christian Ireland was the period when Christianity first came to Ireland from a bishop named Palladius"
+    },
+    {
+        "title": "The Archaeologist",
+        "path": ["History"],
+        "level": 1,
+        "url": "archaeologist",
+        "excerpt": "Learn the basic key words that are used by Archaeologists"
+    },
+    {
         "title": "Ancient Ireland",
         "path": ["History"],
         "level": 1,
-        "url": "ancient",
+        "url": "anc-ireland",
         "excerpt": "The <strong>stone</strong>, (Mesolithic and Neolithic periods) and <strong>bronze age</strong> are the prehistoric (before recorded history) eras of Ireland."
     },
     {
@@ -203,14 +224,14 @@
         "title": "Life and Death in the medieval times",
         "path": ["History"],
         "level": 1,
-        "url": "medieval",
+        "url": "med-life-death",
         "excerpt": "People lived in a feudal system in the Middle Ages, meaning that the social hierarchy was very strict with most of the population being peasants."
     },
     {
         "title": "Medieval Ireland",
         "path": ["History"],
         "level": 1,
-        "url": "middle",
+        "url": "med-ireland",
         "excerpt": "The Middle Ages in Ireland had a lot of conflict, as the Vikings and the Normans came into Ireland and had a huge impact."
     },
     {
