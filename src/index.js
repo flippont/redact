@@ -4,10 +4,10 @@ window.links = document.getElementById('links')
 window.output = document.getElementById('text')
 window.heading = document.getElementById('heading')
 
-let location = location.href
-let params = location.searchParams
+let loc = location.href
+let params = loc.searchParams
 
-console.log(location, params)
+console.log(loc, params)
 let data = []
 let paths = []
 let currentPath = []
@@ -395,7 +395,7 @@ function populateLinks() {
 
 init = () => {
     currentPath = []
-    window.history.replaceState(state, null, location);
+    window.history.replaceState(state, null, loc);
     if(params.get('q')) {
         changePage('home')
         renderLists(params.get('s').split(','))
