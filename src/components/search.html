@@ -1,11 +1,30 @@
 <div style="width: 400px; float: right;">
-    <p id="matches"></p>
+    <div id="matches"></div>
     <div class="box">
         <div class="boxTop">
             <h2>Filter</h2>
         </div>
         <div class="boxBottom">
-            
+            <p class="label">Sort by:</p>
+            <select name="sortby" id="sortby">
+                <option value="alphabetic">Alphabetical</option>
+                <option value="subject">Subject</option>
+                <option value="levl">Level</option>
+            </select>
+            <p class="label">Filter for one subject</p>
+            <select name="subjects" id="subjects">
+            </select>
+            <p class="label">Filter for level</p>
+            <select name="subjects" id="subjects">
+                <option value="first">First year</option>
+                <option value="second">Second year</option>
+                <option value="third">Third year</option>
+            </select>
+            <p class="label">Filter out:</p>
+            <button class="filter" id="filterread">Articles you've read</button>
+            <button class="filter" id="filtertest">Articles without tests</button>
+            <p class="label">Other:</p>
+            <button class="filter" id="">Reverse sort order</button>
         </div>
     </div>
     

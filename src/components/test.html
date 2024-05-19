@@ -3,21 +3,24 @@
     </div>
     <div class="box">
         <div class="boxTop" style="background: #cedff2;">
-            <h2>Excerpt</h2>
+            <h2>Progress</h2>
         </div>
-        <div class="boxBottom" id="excerpt">
+        <div class="boxBottom" id="progress">
             
         </div>
     </div>
     <div class="box" id="contentscont">
         <div class="boxTop" style="background: #cef2e0;">
-            <h2>Table of contents</h2>
+            <h2>Results</h2>
         </div>
         <div class="boxBottom" id="contents">
-
+            <button class="submit" onclick="return getResults(0);" type="submit"> Submit</button>
+            <button class="submit" onclick="return reset(0);"> Reset</button>
+            </br>
+            <p id="results">Score: 0/6</p>
         </div>
     </div>
 </div>
 
-<div style="width: calc(100% - 410px); float: left;" id="article">
+<div style="width: calc(100% - 410px); float: left;" id="test">
 </div>
