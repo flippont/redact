@@ -258,7 +258,10 @@ let html = {
                         box.className = 'box'
                         box.style.padding = '20px'
                         box.style.paddingTop = '5px'
-                        box.innerHTML = text;
+                        let boxBody = document.createElement('div')
+                        boxBody.className = 'boxBottom'
+                        boxBody.innerHTML = text;
+                        box.appendChild(boxBody);
                         document.getElementById('article').appendChild(box)
                         document.getElementById('contentscont').hidden = 'true'
                     }
