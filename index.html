@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re-dact</title>
+</head>
+<body>
+    <link rel="stylesheet" href="./src/style.css">
+    <div class="main">
+        <div class="header">
+            <button class="searchBtn" tabindex="3" onclick="changePage('search')">Search</button><input type="text" id="search" tabindex="2" class="search" placeholder="Search for articles...">
+            <h1 onclick="resetURL(); changePage('home')" tabindex="1">redact</h1>
+        </div>
+        <div class="container">
+
+            <div class="contents" id="container">
+                <div class="loading"></div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./src/index.js"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
           menuSettings:{
@@ -27,22 +44,5 @@
       <script type="text/javascript"
         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
       </script>
-</head>
-<body>
-    <link rel="stylesheet" href="./src/style.css">
-    <div class="main">
-        <div class="header">
-            <button class="searchBtn" tabindex="3" onclick="changePage('search')">Search</button><input type="text" id="search" tabindex="2" class="search" placeholder="Search for articles...">
-            <h1 onclick="resetURL(); changePage('home')" tabindex="1">redact</h1>
-        </div>
-        <div class="container">
-
-            <div class="contents" id="container">
-                <div class="loading"></div>
-            </div>
-
-        </div>
-    </div>
-    <script src="./src/index.js"></script>
 </body>
 </html>
