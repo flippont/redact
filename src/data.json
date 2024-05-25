@@ -246,14 +246,14 @@
         "title": "Motion",
         "path": ["Science", "Physics"],
         "level": 1,
-        "url": "speed",
+        "url": "motion",
         "excerpt": "Speed is the rate in which an object is moving."
     },
     {
         "title": "Force",
         "path": ["Science", "Physics"],
         "level": 1,
-        "url": "speed",
+        "url": "force",
         "excerpt": "Force is the push or pull on an object with mass, which causes it to change its velocity."
     },
     {
