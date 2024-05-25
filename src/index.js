@@ -251,7 +251,7 @@ let html = {
                             header.className = 'contentsButton'
                             header.innerHTML = headings[i].heading.innerHTML.replace(':', '');
                             header.onclick = (() => { 
-                                window.scrollTo(0, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase().offsetTop - document.getElementsByClassName('header')[0].offsetHeight))
+                                window.scrollTo(0, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase()).offsetTop - document.getElementsByClassName('header')[0].offsetHeight)
                             })
                             document.getElementById('contents').appendChild(header)
                         }
@@ -524,7 +524,7 @@ function calculatePercentage(listName) {
     if (totalNumber == 0) {
         totalNumber = 1
     }
-    return Math.floor((itemNumber / totalNumber) * 100)
+    return (itemNumber / totalNumber)
 }
 
 function renderLists(path, popstate = false) {
@@ -565,11 +565,17 @@ function renderLists(path, popstate = false) {
     }
 
     document.getElementById('subjects').innerHTML = '';
+    let noCards = 0;
 
     for (let i = 0; i < data.length; i++) {
         if (arraysEqual(data[i].path, currentPath)) {
+            noCards+=1;
             document.getElementById('subjects').appendChild(drawCard(data[i]))
         }
+    }
+
+    if(!path && noCards == 0) {
+        document.getElementById('subjects').innerHTML = 'Error retreiving data: Maybe try refreshing the page?'
     }
 
     if (!path) return true
@@ -592,7 +598,7 @@ function renderLists(path, popstate = false) {
             renderLists(path[i].subs)
         }
 
-        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * 1.3 + 10 + 'pt'
+        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * window.container.style.width - 370 + 'px'
         let clrHue = (path[i].colour) ? path[i].colour :
             paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
         nestFile.style.boxShadow = 'inset 10px 0 ' + clrHue + ', inset ' + clrWidth + ' 0 rgba(154, 255, 140, 0.2)';
