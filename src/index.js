@@ -1,3 +1,4 @@
+
 window.container = document.getElementById('container')
 
 let data = []
@@ -598,7 +599,8 @@ function renderLists(path, popstate = false) {
             renderLists(path[i].subs)
         }
 
-        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * (parseInt(window.container.style.width, 10) - 370) + 'px'
+        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * (Math.min(window.innerWidth, 980) - 374) + 'px'
+        console.log(window.innerWidtha)
         let clrHue = (path[i].colour) ? path[i].colour :
             paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
         nestFile.style.boxShadow = 'inset 10px 0 ' + clrHue + ', inset ' + clrWidth + ' 0 rgba(154, 255, 140, 0.2)';
@@ -679,3 +681,4 @@ window.onpopstate = (event) => {
     }
     changePage(state.page, true)
 }
+    
