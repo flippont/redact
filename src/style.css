@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
     margin: 0 auto;
     overflow-y: auto;
     overflow-x: hidden;
@@ -111,7 +111,7 @@ a:hover {
 
 .search {
     border: none;
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
     background: hsla(0, 0%, 48%, 0.21);
     margin-bottom: 5pt;
     border-radius: 3px 0 0 3px;
@@ -123,7 +123,7 @@ a:hover {
 }
 
 .searchBtn {
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
     background: var(--hover);
     cursor: pointer;
     padding: 7pt;
@@ -234,7 +234,7 @@ legend {
 .submit {
     padding: 7pt 10pt 7pt 10pt;
     border: none;
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
     background: var(--hover);
     cursor: pointer;
 }
@@ -265,7 +265,7 @@ table {
     max-width: 100%;
     overflow-x: auto;
     border-collapse: collapse;
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
     overflow: hidden
 }
 
@@ -330,7 +330,7 @@ th {
     cursor: pointer;
     text-align: left;
     padding: 10px;
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
 .testBtn:hover {
@@ -346,7 +346,7 @@ th {
     cursor: pointer;
     text-align: left;
     margin-bottom: 10px;
-    font: 12px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
 .filter:hover {
@@ -362,7 +362,7 @@ th {
     margin-bottom: 10px;
     border-radius: 0px;
     padding: 0.3em 0.5em;
-    font: 13px/1.231 arial, helvetica, clean, sans-serif;
+    font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
 .contentsButton:hover {
