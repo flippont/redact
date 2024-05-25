@@ -257,6 +257,13 @@
         "excerpt": "Force is the push or pull on an object with mass, which causes it to change its velocity."
     },
     {
+        "title": "Energy",
+        "path": ["Science", "Physics"],
+        "level": 1,
+        "url": "energy",
+        "excerpt": "<b>Work</b> measures the energy transfer that happens when an object is moved with a force, and it is measured in <b>Joules</b> (J)."
+    },
+    {
         "title": "Electricity",
         "path": ["Science", "Physics"],
         "level": 1,
