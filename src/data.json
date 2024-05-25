@@ -269,5 +269,179 @@
         "level": 1,
         "url": "electricity",
         "excerpt": "Electricity is the result of the movement of electrons, which have a negative charge."
+    },
+    {
+        "title": "Le Passé composé with avoir",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "avoirpasse",
+        "excerpt": "Le passé composé is a past tense to describe once off completed actions in the past. "
+    },
+    {
+        "title": "Le Passé composé with Être",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "avoirpasse",
+        "excerpt": "Le passé composé is a past tense to describe once off completed actions in the past. Although the majority is conjugated in avoir, some are conjugated with Être."
+    },
+    {
+        "title": "Comparatif",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "comparitif",
+        "excerpt": "In English we have two ways of comparing things whereas in French we have 1.",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Demonstrative Adjectives",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "demonstrative",
+        "excerpt": "Demonstrative adjectives:  this/that/these/those ",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Futur Simple ",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "futuresimple",
+        "excerpt": "The futur simple is a tense used to describe actions that will happen in the future ",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Le Futur Proche (Immediate future)",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "immediate",
+        "excerpt": "To form the futur proche, you musy join the present tense of aller with the infinitive form of the verb. ",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "L’imparfait  (imperfect)",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "imparfait",
+        "excerpt": "The imperfect is a past tense in French. It is used to describe 5 different types of things.",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "L’impératif  (imperative)",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "imperatif",
+        "excerpt": "The imperative is a way to make orders in French.",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "IR verbs",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "irverbs",
+        "excerpt": "Conjugating verbs that end in IR",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Les Prepositions (Prepositions)",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "prepositions",
+        "excerpt": "A list of prepositions in French",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Questions",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "questions",
+        "excerpt": "How to form questions in French",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Tenses - glance sheet",
+        "path": ["French", "Grammar"],
+        "level": 2,
+        "url": "tenses",
+        "excerpt": "A comprehensive list of all of the tenses in French",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "L'aéroport (The Airport)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "airport",
+        "excerpt": "Lists out vocab related to the airport",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Le corps (The Body)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "body",
+        "excerpt": "Lists out vocab related to the body",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Les directions (The Directions)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "directions",
+        "excerpt": "Lists out vocab related to the different directions",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Émotions (Emotions)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "emotions",
+        "excerpt": "Lists out vocab related to the different emotions",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Irregular present tense",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "ireg-pres",
+        "excerpt": "Lists out vocab related to the different emotions",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Irregular verbs",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "irregular",
+        "excerpt": "Lists out vocab related to the different emotions",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Savoir / Connaitre",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "know",
+        "excerpt": "Shows the difference between the two 'knows' in French",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Nombres (Numbers)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "numbers",
+        "excerpt": "Lists out vocab related to the numbers",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "Pièces de la maison (Rooms of the house)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "rooms",
+        "excerpt": "Lists out vocab related to the rooms in the house",
+        "author": "Zayon Khaleik"
+    },
+    {
+        "title": "La table (The table)",
+        "path": ["French", "Vocabulary"],
+        "level": 2,
+        "url": "table",
+        "excerpt": "Lists out vocab related to items on the table",
+        "author": "Zayon Khaleik"
     }
 ]

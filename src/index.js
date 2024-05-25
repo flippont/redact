@@ -250,7 +250,9 @@ let html = {
                             let header = document.createElement('button')
                             header.className = 'contentsButton'
                             header.innerHTML = headings[i].heading.innerHTML.replace(':', '');
-                            header.onclick = ((element) => { element.scrollIntoView() }).bind(this, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase()))
+                            header.onclick = (() => { 
+                                window.scrollTo(0, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase().offsetTop - document.getElementsByClassName('header')[0].offsetHeight))
+                            })
                             document.getElementById('contents').appendChild(header)
                         }
                     } else {
