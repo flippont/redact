@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled Notes App</title>
+    <title>Re-dact</title>
 </head>
 <body>
     <link rel="stylesheet" href="./src/style.css">
-    <div class="nav">
-        <div class="links" id="links">
-        </div>
-    </div>
     <div class="main">
+        <div class="header">
+            <button class="searchBtn" tabindex="3" onclick="changePage('search')">Search</button><input type="text" id="search" tabindex="2" class="search" placeholder="Search for articles...">
+            <h1 onclick="resetURL(); changePage('home')" tabindex="1">redact</h1>
+        </div>
         <div class="container">
-            <h1 id="heading">Untitled Notes App</h1>
-            <input type="text" id="search" class="search" placeholder="Search...">
-            <div id="text"></div>
-            <div id="container">
-                Loading...
+
+            <div class="contents" id="container">
+                <div class="loading"></div>
             </div>
+
         </div>
     </div>
-
     <script src="./src/index.js"></script>
 </body>
 </html>

@@ -43,6 +43,7 @@
         "path": ["Irish", "Grammar"],
         "level": 1,
         "url": "chaite",
+        "test": true,
         "excerpt": "In Irish, the past tense, or 'Aimsir Chaite,' reflects actions that have already occurred."
     },
     {
