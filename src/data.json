@@ -1,5 +1,29 @@
 [
     {
+        "title": "Poetry Basics",
+        "path": ["English", "Poetry"],
+        "level": 1,
+        "url": "intro",
+        "excerpt": "A short introduction to poetry",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "The Lake Isle of Inisfree notes",
+        "path": ["English", "Poetry"],
+        "level": 1,
+        "url": "lakeofinisfree",
+        "excerpt": "A deep dive into the poem - the Lake Isle of Inisfree",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "Sonnet 18 Basic notes",
+        "path": ["English", "Poetry"],
+        "level": 1,
+        "url": "sonnet-basics",
+        "excerpt": "A brief overview of sonnet 18, one of the best known of the sonnets written by William Shakespeare",
+        "author": "Miss Rawle"
+    },
+    {
         "title": "William Shakespeare - Sonnet 18",
         "path": ["English", "Poetry"],
         "level": 3,
@@ -11,7 +35,7 @@
         "title": "Stopping By Woods on a Snow Evening",
         "path": ["English", "Poetry"],
         "level": 1,
-        "url": "frost",
+        "url": "snowevening",
         "excerpt": "Summaries / Analysis on the poem Stopping By The Woods On a Snow Evening by Robert Frost",
         "author": "Miss Rawle"
     },
@@ -24,19 +48,93 @@
         "author": "Miss Rawle"
     },
     {
-        "title": "Of Mice and Men sample answer",
+        "title": "Poetic Techniques",
+        "path": ["English", "Poetry"],
+        "level": 1,
+        "url": "techniques",
+        "excerpt": "A comprehensive list of poetic techniques in English",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "Dulce Et Decorum Est Worksheet",
+        "path": ["English", "Poetry"],
+        "level": 1,
+        "url": "techniques",
+        "excerpt": "A worksheet for dulce et decorum, a poem by Wilfred Owen",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "Write Descriptive Passages to Die For",
+        "path": ["English", "Creative Writing"],
+        "level": 3,
+        "url": "https://www.underdown.org/mf-description.htm",
+        "excerpt": "An article on writing description in children's books"
+    },
+    {
+        "title": "'Of Mice and Men' - Letter from George",
+        "path": ["English", "Creative Writing"],
+        "level": 3,
+        "url": "omamsample",
+        "excerpt": "A sample answer for a letter from George."
+    },
+    {
+        "title": "Of Mice and Men intro",
         "path": ["English", "Literature"],
         "level": 3,
-        "url": "mice",
-        "excerpt": "A sample answer to explain the art of good story telling",
+        "url": "omam",
+        "excerpt": "The basics of the novella 'Of Mice and Men' by John Steinbeck",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "Friendship in 'Of Mice and Men'",
+        "path": ["English", "Literature"],
+        "level": 3,
+        "url": "omamfriendship",
+        "excerpt": "The role of friendship in the novella 'Of Mice and Men' by John Steinbeck",
+        "author": "Miss Rawle"
+    },
+    {
+        "title": "Quotes from 'Of Mice and Men'",
+        "path": ["English", "Literature"],
+        "level": 3,
+        "url": "omamquotes",
+        "excerpt": "Key quotes taken from the novella 'Of Mice and Men'",
         "author": "Miss Rawle"
     },
     {
         "title": "Romeo and Juliet quotes",
         "path": ["English", "Drama"],
         "level": 3,
-        "url": "romeo",
+        "url": "romeoquotes",
         "excerpt": "A list of quotes from the play by William Shakespear, Romeo and Juliet"
+    },
+    {
+        "title": "Romeo Profile",
+        "path": ["English", "Drama"],
+        "level": 3,
+        "url": "romeo",
+        "excerpt": "A deep dive into the character of Romeo in the play 'Romeo and Juliet'"
+    },
+    {
+        "title": "Juliet Profile",
+        "path": ["English", "Drama"],
+        "level": 3,
+        "url": "juliet",
+        "excerpt": "A deep dive into the character of Juliet in the play 'Romeo and Juliet'"
+    },
+    {
+        "title": "Romeo and Juliet Key Scenes",
+        "path": ["English", "Drama"],
+        "level": 3,
+        "url": "keyscenes",
+        "excerpt": "A list of key scenes in the play Romeo and Juliet, with it's descriptions."
+    },
+    {
+        "title": "Film Terminology",
+        "path": ["English", "Flims"],
+        "level": 3,
+        "url": "terminology",
+        "excerpt": "Key terms related to cinema"
     },
     {
         "title": "An Aimsir Chaite (The Past Tense)",

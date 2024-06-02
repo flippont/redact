@@ -91,9 +91,13 @@ let html = {
                             small.style.borderLeft = '10px solid ' + paths[findPath(dat.path, paths, 0, [], 'location')[0]].colour
                             small.innerHTML = saved[i]
                             small.onclick = () => {
-                                currentPage = { url: dat.url, title: dat.title }
-                                currentPath = dat.path
-                                changePage('article')
+                                if(dat.url.includes('http')) {
+                                    window.open(dat.url);
+                                } else {
+                                    currentPage = { url: dat.url, title: dat.title }
+                                    currentPath = dat.path
+                                    changePage('article')
+                                }
                             }
                             document.getElementById('saved').appendChild(small)
                         }
@@ -493,15 +497,25 @@ function drawCard(data) {
     articleItem.style.boxShadow = `10px 0px ${paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour} inset`
     articleItem.onkeyup = (event) => {
         if (event.key == 'Enter') {
-            currentPage = { url: data.url, title: data.title }
-            currentPath = data.path
-            changePage('article')
+            if(data.url.includes('http')) {
+                window.open(data.url);
+            } else {
+                currentPage = { url: data.url, title: data.title }
+                currentPath = data.path
+                changePage('article')
+            }
         }
     }
     articleItem.onclick = () => {
         currentPage = { url: data.url, title: data.title }
         currentPath = data.path
-        changePage('article')
+        if(data.url.includes('http')) {
+            window.open(data.url);
+        } else {
+            currentPage = { url: data.url, title: data.title }
+            currentPath = data.path
+            changePage('article')
+        }
     }
     return articleItem
 }

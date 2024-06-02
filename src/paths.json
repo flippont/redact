@@ -4,12 +4,10 @@
         "colour": "#ef476f",
         "subs": [
             { "name": "Poetry" },
-            { "name": "Grammar" },
             { "name": "Literature" },
             { "name": "Drama" },
             { "name": "Films" },
-            { "name": "Creative Writing" },
-            { "name": "CBA 1" }
+            { "name": "Creative Writing" }
         ]
     },
     {

@@ -243,7 +243,7 @@ legend {
     background: #fff;
     box-shadow: 0px 1px #EEE;
     width: calc(100% - 40px);
-    position: fixed;
+    height: 45px;
     z-index: 1;
     left: 0px;
     padding: 10px;
@@ -288,6 +288,10 @@ th::-webkit-resizer {
 ul {
     list-style: disc outside;
     margin: 0em;
+    padding-left: 10px;
+}
+.quoted {
+    padding-left: 0;
 }
 
 td,
@@ -298,6 +302,7 @@ th {
 }
 
 .title {
+    margin-top: 20px;
     color: #a2a9b1;
 }
 
@@ -365,6 +370,21 @@ th {
     font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
+iframe {
+    border: none;
+    width: 100%;
+}
+
+.quote {
+    background: var(--white);
+    list-style-type: none;
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .contentsButton:hover {
     opacity: 0.5;
 }
@@ -379,7 +399,7 @@ th {
 }
 
 .star {
-    margin-top: 10px;
+    margin-top: 20px;
     float: right;
     fill: #ccc;
     cursor: pointer;
