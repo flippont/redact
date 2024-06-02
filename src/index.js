@@ -91,13 +91,9 @@ let html = {
                             small.style.borderLeft = '10px solid ' + paths[findPath(dat.path, paths, 0, [], 'location')[0]].colour
                             small.innerHTML = saved[i]
                             small.onclick = () => {
-                                if(dat.url.includes('http')) {
-                                    window.open(dat.url);
-                                } else {
-                                    currentPage = { url: dat.url, title: dat.title }
-                                    currentPath = dat.path
-                                    changePage('article')
-                                }
+                                currentPage = { url: dat.url, title: dat.title }
+                                currentPath = dat.path
+                                changePage('article')
                             }
                             document.getElementById('saved').appendChild(small)
                         }
@@ -306,7 +302,7 @@ function updateProgress(element, total) {
     }
     let progress = document.createElement('div');
     progress.className = 'progress'
-    progress.style.boxShadow = (280 * ((checkArray.length - 1) / total)) + 'px 0px #ccc inset'
+    progress.style.boxShadow = (280 * ((checkArray.length - 1) / total)) + 'px 0px #00E054 inset'
     document.getElementById('progress').appendChild(progress)
 }
 function saveArticle(starElement, save) {
@@ -354,7 +350,6 @@ function getResults() {
             let radiosValue = radiosName[j];
             radiosValue.disabled = true
             if (radiosValue.checked) {
-                document.getElementById('question-' + i).style.color = '#fff';
                 if (radiosValue.value == 'correct') {
                     amountCorrect++;
                     document.getElementById('question-' + i).style.background = '#90be6d6a';
@@ -385,8 +380,7 @@ function reset() {
             radiosName[j].checked = false
             radiosName[j].disabled = false
             radiosName[j].style.boxShadow = 'none'
-            document.getElementById('question-' + i).style.background = '#f6f6f6';
-            document.getElementById('question-' + i).style.color = '#000';
+            document.getElementById('question-' + i).style.background = 'var(--element)';
         }
     }
 }
@@ -497,25 +491,15 @@ function drawCard(data) {
     articleItem.style.boxShadow = `10px 0px ${paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour} inset`
     articleItem.onkeyup = (event) => {
         if (event.key == 'Enter') {
-            if(data.url.includes('http')) {
-                window.open(data.url);
-            } else {
-                currentPage = { url: data.url, title: data.title }
-                currentPath = data.path
-                changePage('article')
-            }
+            currentPage = { url: data.url, title: data.title }
+            currentPath = data.path
+            changePage('article')
         }
     }
     articleItem.onclick = () => {
         currentPage = { url: data.url, title: data.title }
         currentPath = data.path
-        if(data.url.includes('http')) {
-            window.open(data.url);
-        } else {
-            currentPage = { url: data.url, title: data.title }
-            currentPath = data.path
-            changePage('article')
-        }
+        changePage('article')
     }
     return articleItem
 }
@@ -695,4 +679,3 @@ window.onpopstate = (event) => {
     }
     changePage(state.page, true)
 }
-    

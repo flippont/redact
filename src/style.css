@@ -1,8 +1,9 @@
 :root {
-    --background: #e2eeff;
-    --white: #fff;
-    --borders: #a2a9b1;
-    --hover: #eee;
+    --background: #20262E;
+    --white: #FFF;
+    --borders: #dddddd3f;
+    --element: #2C3440;
+    --search: #7a7a7a36;
 }
 
 html,
@@ -13,7 +14,8 @@ body {
     left: 0px;
     height: 100vh;
     font-weight: 400;
-    background: #f0f0f0;
+    color: var(--white);
+    background: var(--background);
 }
 
 body {
@@ -60,30 +62,35 @@ a:hover {
     padding: 20pt;
     min-height: calc(100vh - 80pt);
     height: auto;
-    background: #fff;
     padding-top: 60pt;
 }
 
 .list {
     margin-bottom: 5pt;
-    border-radius: 0;
     font-style: italic;
-    background: var(--white);
     cursor: pointer;
     padding: 10px;
     padding-left: 16px;
     width: calc(100% - 20pt);
+    overflow: hidden;
+    clip-path: inset(0% 0% 0% 0% round 2px);
     vertical-align: baseline;
-    color: #000;
+    transition: 0.3s;
+    border: 1px solid var(--borders);
+    background: var(--element);
+}
+.list:focus{ 
+    outline: none;
+    opacity: 0.1;
 }
 
 
 .list:hover {
-    background: var(--hover);
+    opacity: 0.1;
 }
 
 .active {
-    color: #000;
+    color: var(--white);
 }
 
 .article {
@@ -92,7 +99,10 @@ a:hover {
     padding: 20pt;
     width: calc(100% - 40pt);
     vertical-align: baseline;
-    background: var(--white);
+    background: var(--element);
+    clip-path: inset(0% 0% 0% 0% round 2px);
+    box-shadow: inset 0 0 10px var(--borders);
+    transition: 0.3s;
 }
 
 #saved {
@@ -101,7 +111,7 @@ a:hover {
 }
 
 .article:hover {
-    background: var(--hover);
+    opacity: 0.1;
 }
 
 .links {
@@ -112,11 +122,14 @@ a:hover {
 .search {
     border: none;
     font: 14px/22px arial, helvetica, clean, sans-serif;
-    background: hsla(0, 0%, 48%, 0.21);
+    background: var(--search);
     margin-bottom: 5pt;
-    border-radius: 3px 0 0 3px;
+    border-radius: 20px 0 0 20px;
     width: 250pt;
     float: right;
+    color: var(--white);
+    outline: none;
+    margin-top: -10px;
     padding: 7pt;
     padding-left: 20px;
 
@@ -124,16 +137,27 @@ a:hover {
 
 .searchBtn {
     font: 14px/22px arial, helvetica, clean, sans-serif;
-    background: var(--hover);
+    background: var(--search);
     cursor: pointer;
-    padding: 7pt;
+    padding: 7px;
+    padding-top: 12px;
     float: right;
+    color: var(--white);
     width: 50pt;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 20px 20px 0;
     z-index: 100;
+    transition: 0.3s;
+    margin-top: -10px;
+    margin-right: 10px;
     border: none;
+    outline: none;
 }
-
+.searchBtn:focus .filled{
+    fill: #00E054
+}
+.searchBtn:hover .filled{
+    fill: #00E054
+}
 .contents {
     max-width: 950px;
     margin: auto;
@@ -160,28 +184,25 @@ input[type="radio"] {
     box-sizing: border-box;
     width: 5pt;
     height: 5pt;
-    margin: 5pt;
+    margin: 2pt;
     padding: 0;
-    margin-top: 2px;
+    margin-top: 8px;
     margin-right: 10pt;
     border-radius: 50%;
     appearance: none;
-    background-color: #ddd;
+    background-color: transparent;
     outline: none;
     cursor: pointer;
-    border: 2pt solid none;
+    border: none;
 }
 
 input[type="radio"]:not(:disabled):checked {
-    background-color: #fff;
-    border: 1px solid #000;
-    width: 4px;
-    height: 4px;
+    background-color: var(--white);
     padding: 2pt;
 }
 
 input[type="radio"]:disabled:checked {
-    background-color: #fff;
+    background-color: var(--white);
     padding: 2pt;
 }
 
@@ -205,18 +226,15 @@ input[type="radio"]:disabled {
 }
 
 .boxTop {
-    padding-left: 10px;
     padding-top: 17px;
     padding-bottom: 17px;
 
     font-size: small;
-    color: #000;
+    color: var(--white);
 }
 
 .boxBottom {
     padding: 10px;
-    background: #f6f6f6;
-    border: 1px solid #ddd;
 }
 
 legend {
@@ -225,23 +243,21 @@ legend {
 
 .questions {
     padding: 10pt;
-    margin-bottom: 10pt;
-    color: #000;
-    background: #f6f6f6;
-    border: 1px solid #ddd;
+    margin-top: 10pt;
+    color: var(--white);
+    background: var(--element);
 }
 
 .submit {
     padding: 7pt 10pt 7pt 10pt;
     border: none;
     font: 14px/22px arial, helvetica, clean, sans-serif;
-    background: var(--hover);
+    background: var(--element);
+    color: var(--white);
     cursor: pointer;
 }
 
 .header {
-    background: #fff;
-    box-shadow: 0px 1px #EEE;
     width: calc(100% - 40px);
     height: 45px;
     z-index: 1;
@@ -250,10 +266,12 @@ legend {
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;
+    background: #14181C;
+    position: fixed;
 }
 
 .header h1 {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 20px;
     cursor: pointer;
     width: fit-content;
@@ -266,16 +284,16 @@ table {
     overflow-x: auto;
     border-collapse: collapse;
     font: 14px/22px arial, helvetica, clean, sans-serif;
-    overflow: hidden
+    overflow: hidden;
 }
 
 tr {
-    background: var(--hover);
+    background: var(--element);
 }
 
 th {
     text-align: left;
-    color: #000;
+    color: var(--white);
     font-weight: bold;
     resize: horizontal;
 }
@@ -297,11 +315,13 @@ ul {
 td,
 th {
     padding: 7pt 14pt 7pt 14pt;
-    border: 1px solid #ccc;
+    border: 1px solid var(--borders);
     text-overflow: clip;
 }
 
+
 .title {
+    margin-left: 10px;
     margin-top: 20px;
     color: #a2a9b1;
 }
@@ -329,9 +349,11 @@ th {
 }
 
 .testBtn {
-    border: 1px solid #ccc;
-    background: #f6f6f6;
+    border: 1px solid var(--borders);
+    background: var(--element);
+    color: var(--white);
     width: 100%;
+    border-radius: 3px;
     cursor: pointer;
     text-align: left;
     padding: 10px;
@@ -343,7 +365,7 @@ th {
 }
 
 .filter {
-    background-color: var(--hover);
+    background-color: var(--element);
     padding: 10px;
     border: none;
     padding-left: 20px;
@@ -351,6 +373,8 @@ th {
     cursor: pointer;
     text-align: left;
     margin-bottom: 10px;
+    color: var(--white);
+    border-radius: 3px;
     font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
@@ -360,27 +384,38 @@ th {
 
 .contentsButton {
     border: none;
-    background: #f6f6f6;
+    background: var(--element);
+    color: var(--white);
     width: 100%;
     cursor: pointer;
     text-align: left;
     margin-bottom: 10px;
     border-radius: 0px;
-    padding: 0.3em 0.5em;
+    padding: 10px;
+    border-radius: 3px;
+    border:1px solid var(--borders);
     font: 14px/22px arial, helvetica, clean, sans-serif;
 }
 
 iframe {
     border: none;
     width: 100%;
+    border-radius: 3px;
 }
-
+a {
+    color:#00E054;
+}
+#extras {
+    margin-left: 10px;
+}
 .quote {
-    background: var(--white);
+    background: var(--element);
     list-style-type: none;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 3px;
     display: block;
+    border: 1px solid var(--borders);
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -393,9 +428,10 @@ iframe {
     padding: 10px;
     font-style: italic;
     cursor: pointer;
-    background: var(--white);
+    background: var(--element);
     margin: 2px;
     margin-bottom: 5px;
+    clip-path: inset(0% 0% 0% 0% round 2px);
 }
 
 .star {
@@ -411,8 +447,8 @@ iframe {
     height: 25px;
     margin: auto;
     margin-top: calc(50vh - 100px);
-    border: 5px solid #fff;
-    border-top-color: black;
+    border: 5px solid var(--background);
+    border-top-color: var(--white);
     -webkit-animation: spin 0.5s infinite linear;
     animation: spin 0.5s infinite linear;
 }
@@ -425,16 +461,16 @@ iframe {
 .progress {
     margin: 10px;
     width: calc(100% - 20px);
-    height: 30px;
-    border: 1px solid #ccc;
-    background: #fff;
+    height: 20px;
+    background: var(--element);
 }
 
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--hover);
+    background-color: var(--element);
+    color: var(--white);
     padding: 10px;
     border: none;
     padding-left: 20px;
@@ -445,11 +481,11 @@ select {
     cursor: inherit;
     line-height: inherit;
     z-index: 1;
+    border-radius: 3px;
     cursor: pointer;
     background-image:
         linear-gradient(45deg, transparent 50%, gray 50%),
-        linear-gradient(135deg, gray 50%, transparent 50%),
-        linear-gradient(to right, #ccc, #ccc);
+        linear-gradient(135deg, gray 50%, transparent 50%);
     background-position:
         calc(100% - 20px) calc(1em + 2px),
         calc(100% - 15px) calc(1em + 2px),
@@ -460,23 +496,6 @@ select {
         1px 1.5em;
     background-repeat: no-repeat;
 }
-
-select:focus {
-    background-image:
-        linear-gradient(45deg, gray 50%, transparent 50%),
-        linear-gradient(135deg, transparent 50%, gray 50%),
-        linear-gradient(to right, #ccc, #ccc);
-    background-position:
-        calc(100% - 15px) 1em,
-        calc(100% - 20px) 1em,
-        calc(100% - 2.5em) 0.5em;
-    background-size:
-        5px 5px,
-        5px 5px,
-        1px 1.5em;
-    background-repeat: no-repeat;
-}
-
 
 @keyframes spin {
     0% {

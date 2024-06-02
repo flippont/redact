@@ -56,14 +56,6 @@
         "author": "Miss Rawle"
     },
     {
-        "title": "Dulce Et Decorum Est Worksheet",
-        "path": ["English", "Poetry"],
-        "level": 1,
-        "url": "techniques",
-        "excerpt": "A worksheet for dulce et decorum, a poem by Wilfred Owen",
-        "author": "Miss Rawle"
-    },
-    {
         "title": "Write Descriptive Passages to Die For",
         "path": ["English", "Creative Writing"],
         "level": 3,
@@ -131,7 +123,7 @@
     },
     {
         "title": "Film Terminology",
-        "path": ["English", "Flims"],
+        "path": ["English", "Films"],
         "level": 3,
         "url": "terminology",
         "excerpt": "Key terms related to cinema"
