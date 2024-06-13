@@ -1,41 +1,27 @@
-<div style="width: 300px; float: right;">
-    <div id="matches"></div>
-    <div class="box">
-        <div class="boxTop">
-            <h2>Filter</h2>
-        </div>
-        <div class="boxBottom">
-            <p class="label">Sort by:</p>
-            <select name="sortby" id="sortby">
-                <option value="alphabetic">Alphabetical</option>
-                <option value="subject">Subject</option>
-                <option value="level">Level</option>
-            </select>
-            <p class="label">Filter for one subject</p>
-            <select name="subjects" id="subjects">
-                <option value="all">All subjects</option>
-            </select>
-            <p class="label">Filter for level</p>
-            <select name="level" id="level">
-                <option value="all">All years</option>
-                <option value="first">First year</option>
-                <option value="second">Second year</option>
-                <option value="third">Third year</option>
-            </select>
-            <p class="label">Filter out:</p>
-            <button class="filter" id="filterread">Articles you've read</button>
-            <button class="filter" id="filtertest">Articles without tests</button>
-            <p class="label">Other:</p>
-            <button class="filter" id="reverse">Sort Order: ▼</button>
-            <button class="filter" id="reset">Reset</button>
-        </div>
-    </div>
-    
-</div>
-
-<div class="box" style="width: calc(100% - 310px); float: left;">
+<div class="box">
     <div class="boxTop">
-        <h2>Articles</h2>
+            <h2>Filter</h2>
+            <div class="sorter">
+                <select name="sortby" id="sortby">
+                    <option value="alphabetic">Alphabetical</option>
+                    <option value="subject">Subject</option>
+                    <option value="level">Level</option>
+                </select>
+                <select name="subjects" id="subjects">
+                </select>
+                <select name="level" id="level">
+                    <option value="all">All years</option>
+                    <option value="first">First year</option>
+                    <option value="second">Second year</option>
+                    <option value="third">Third year</option>
+                </select>
+                
+                <button class="filter" id="filterread">Articles you've read </button>
+                <button class="filter" id="filtertest">Articles without tests </button>
+                
+                <button class="filter" id="reverse">Sort order: ▼</button>
+                <button class="filter" id="reset">Reset</button>
+        </div>
     </div>
     <div class="boxBottom" id="contents">
     </div>
