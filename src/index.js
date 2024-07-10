@@ -1,5 +1,7 @@
 
-window.container = document.getElementById('container')
+window.container = document.getElementById('pagebody')
+window.search = document.getElementById('search')
+window.contents = document.getElementById('contents')
 
 let data = []
 let paths = []
@@ -7,6 +9,8 @@ let currentPath = []
 let completed = []
 let saved = []
 let currentPage = ''
+let tabfunction = ''
+let tabbed = []
 
 if (localStorage.getItem('completed')) {
     completed = JSON.parse(localStorage.getItem('completed'))
@@ -25,6 +29,17 @@ let filterCondition = {
     filtertest: false,
     reverse: false
 }
+
+let tabItems = [
+    {
+        name: 'Home',
+        count: data.length
+    },
+    {
+       name: 'Saved',
+       count: saved.length 
+    }
+]
 
 let tag_names = {
     h1: 1,
@@ -63,11 +78,31 @@ let html = {
     'home': {
         url: 'home',
         onenter: () => {
-            window.search.onkeydown = (event) => {
-                if (event.key == 'Enter') {
-                    changePage('search')
-                }
+            for(let i=0; i<5;i++) {
+                document.getElementById('recent').appendChild(drawCard(data[Math.floor(Math.random()*data.length)]))
             }
+            if(saved.length > 0) {
+                for(let i=0; i<saved.length; i++) {
+                    for(let j=0; j<data.length; j++) {
+                        if(data[j].title == saved[i]) {
+                            document.getElementById('starred').appendChild(drawCard(data[j]))
+                        }
+                    }
+                }
+            } else {
+                let nonecontainer = document.createElement('div')
+                nonecontainer.className = 'notFound'
+                nonecontainer.innerHTML = 'No articles saved.... Yet'
+                document.getElementById('starred').appendChild(nonecontainer)
+            }
+            for(let i=0; i<5; i++) {
+                document.getElementById('favs').appendChild(drawCard(data[data.length - (i + 1)]))
+            }        
+        }
+    },
+    'list': {
+        url: 'list',
+        onenter: () => {
             let url = new URL(location);
             if (url.searchParams.get('p')) {
                 let path = url.searchParams.get('p').split(',');
@@ -82,27 +117,32 @@ let html = {
             } else {
                 renderLists(paths, true)
             }
-            if (saved.length > 0) {
-                for (let i = 0; i < saved.length; i++) {
-                    for (let dat of data) {
-                        if (dat.title == saved[i]) {
-                            let small = document.createElement('div')
-                            small.className = 'savedList'
-                            small.style.borderLeft = '10px solid ' + paths[findPath(dat.path, paths, 0, [], 'location')[0]].colour
-                            small.innerHTML = saved[i]
-                            small.onclick = () => {
-                                currentPage = { url: dat.url, title: dat.title }
-                                currentPath = dat.path
-                                changePage('article')
-                            }
-                            document.getElementById('saved').appendChild(small)
-                        }
-                    }
+        }
+    },
+    'about': {
+        url: 'about'
+    },
+    'articles': {
+        url: 'articles',
+        onenter: () => {
+            document.getElementById('results').innerHTML = data.length;
+            for(let i=0; i<data.length; i++) {
+                let contents = document.createElement('div')
+                let popup = document.createElement('div')
+                popup.className = 'tooltip'
+                popup.innerHTML = data[i].title
+                console.log(data[i])
+                contents.className = 'coloured';
+                contents.style.background = paths[findPath([data[i].path[0]], paths, 0, [], 'location')[0]].colour;
+                contents.innerHTML = paths[findPath([data[i].path[0]], paths, 0, [], 'location')[0]].name[0]
+                contents.appendChild(popup)
+                contents.onclick = () => {
+                    currentPage = { url: data[i].url, title: data[i].title }
+                    currentPath = data[i].path
+                    changePage('article')
                 }
-            } else {
-                document.getElementById('saved').innerHTML = 'No articles saved :('
+                document.getElementById('articles').appendChild(contents)
             }
-
         }
     },
     'search': {
@@ -111,62 +151,11 @@ let html = {
             let url = new URL(location);
             url.searchParams.delete('p')
             document.getElementById('sortby').value = filterCondition.sortby
-            document.getElementById('subjects').value = filterCondition.subjects
-            document.getElementById('level').value = filterCondition.level
-            document.getElementById('filterread').innerHTML = 'Articles you\'ve read ' + ((filterCondition.filterread) ? '✓' : '')
-            document.getElementById('filtertest').innerHTML = 'Articles without tests ' + ((filterCondition.filtertest) ? '✓' : '')
-            document.getElementById('reverse').innerHTML = 'Sort order: ' + ((filterCondition.reverse) ? '▲' : '▼')
-
-            for(let i=0; i<paths.length; i++) {
-                document.getElementById('subjects').innerHTML += `<option value="${paths[i].name}">${paths[i].name}</option>`
-            }
             document.getElementById('sortby').onchange = () => {
                 filterCondition.sortby = document.getElementById('sortby').value
                 findArticle(window.search.value)
             }
-            document.getElementById('subjects').onchange = () => {
-                filterCondition.subjects = document.getElementById('subjects').value
-                findArticle(window.search.value)
-            }
-            document.getElementById('level').onchange = () => {
-                filterCondition.level = document.getElementById('level').value
-                findArticle(window.search.value)
-            }
-            document.getElementById('filterread').onclick = () => {
-                filterCondition.filterread = !filterCondition.filterread
-                document.getElementById('filterread').innerHTML = 'Articles you\'ve read ' + ((filterCondition.filterread) ? '✓' : '')
-                findArticle(window.search.value)
-            }
-            document.getElementById('filtertest').onclick = () => {
-                filterCondition.filtertest = !filterCondition.filtertest
-                document.getElementById('filtertest').innerHTML = 'Articles without tests ' + ((filterCondition.filtertest) ? '✓' : '')
-                findArticle(window.search.value)
-            }
-            document.getElementById('reverse').onclick = () => {
-                filterCondition.reverse = !filterCondition.reverse
-                document.getElementById('reverse').innerHTML = 'Sort order: ' + ((filterCondition.reverse) ? '▲' : '▼')
-                findArticle(window.search.value)
-            }
-            document.getElementById('reset').onclick = () => {
-                filterCondition.sortby = 'alphabetic';
-                document.getElementById('sortby').value = 'alphabetic'
-                filterCondition.subjects = 'all';
-                document.getElementById('subjects').value = 'all'
-                filterCondition.level = 'all';
-                document.getElementById('level').value = 'all'
-                filterCondition.filterread = false;
-                document.getElementById('filterread').innerHTML = 'Articles you\'ve read ' + ((filterCondition.filterread) ? '✓' : '')
-                filterCondition.filtertest = false;
-                document.getElementById('filtertest').innerHTML = 'Articles without tests ' + ((filterCondition.filtertest) ? '✓' : '')
-                filterCondition.reverse = false;
-                document.getElementById('reverse').innerHTML = 'Sort order: ' + ((filterCondition.reverse) ? '▲' : '▼')
-                findArticle(window.search.value)
-            }
-            window.search.onkeydown = (event) => {
-                if (event.key == 'Enter') {
-                    changePage('search')
-                }
-            }
+
             findArticle(window.search.value)
         }
     },
@@ -212,29 +201,19 @@ let html = {
                         completed.push(currentPage.title)
                         localStorage.setItem('completed', JSON.stringify(completed))
                     }
-                    window.search.onkeydown = (event) => {
-                        if (event.key == 'Enter') {
-                            changePage('search')
-                        }
-                    }
+
                     document.body.style.backgroundImage = 'linear-gradient(#e66465, #9198e5);'
                     headings = []
                     walk(document.getElementById('article'));
-                    document.getElementById('article').innerHTML =
-                        `
-            <svg height="25" width="23" class="star" data-rating="1" id='star' style="fill:${((saved.includes(currentPage.title)) ? '#e9ba26' : '#ccc')}" onclick="saveArticle(this, '${currentPage.title}')">
-                <path d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218" />
-            </svg>
-            <h1 class="title"><i>${currentPage.title}</h1></i><br>
-            `
-                    for (let dat of data) {
-                        if (dat.title == currentPage.title) {
-                            document.getElementById('excerpt').innerHTML = dat.excerpt
-                            break;
-                        }
+                    document.getElementById('title').innerHTML = currentPage.title;
+                    document.getElementById('star').style.fill = saved.includes(currentPage.title) ? '#e9ba26' : '#ccc';
+                    document.getElementById('star').onclick = () => {
+                        saveArticle(document.getElementById('star'), currentPage.title)
                     }
-
+                    document.getElementById('article').innerHTML = ''
                     if (headings.length > 1) {
+                        window.contents.innerHTML = '<h2>Table of Contents</h2>'
+                        let container = document.createElement('div')
                         for (let i = 0; i < headings.length; i++) {
                             let box = document.createElement('div')
                             box.className = 'box'
@@ -247,20 +226,18 @@ let html = {
                             box.appendChild(boxHead);
                             box.appendChild(boxBody);
                             document.getElementById('article').appendChild(box)
-
                             let header = document.createElement('button')
                             header.className = 'contentsButton'
-                            header.innerHTML = headings[i].heading.innerHTML.replace(':', '');
+                            header.innerHTML =  headings[i].heading.innerHTML.replace(':', '');
                             header.onclick = (() => { 
-                                window.scrollTo(0, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase()).offsetTop - document.getElementsByClassName('header')[0].offsetHeight)
+                                window.scrollTo(0, document.getElementById(headings[i].heading.innerHTML.replace(/\s/g, '-').toLowerCase()).offsetTop - 10)
                             })
-                            document.getElementById('contents').appendChild(header)
+                            container.appendChild(header)
                         }
+                        window.contents.appendChild(container)
                     } else {
                         let box = document.createElement('div')
                         box.className = 'box'
-                        box.style.padding = '20px'
-                        box.style.paddingTop = '5px'
                         let boxBody = document.createElement('div')
                         boxBody.className = 'boxBottom'
                         boxBody.innerHTML = text;
@@ -302,7 +279,7 @@ function updateProgress(element, total) {
     }
     let progress = document.createElement('div');
     progress.className = 'progress'
-    progress.style.boxShadow = (280 * ((checkArray.length - 1) / total)) + 'px 0px #00E054 inset'
+    progress.style.boxShadow = (280 * ((checkArray.length - 1) / total)) + 'px 0px #000 inset'
     document.getElementById('progress').appendChild(progress)
 }
 function saveArticle(starElement, save) {
@@ -386,9 +363,9 @@ function reset() {
 }
 
 function findArticle(term) {
-    if (!document.getElementById('contents')) return
+    if (!document.getElementById('container')) return
     let matches = [];
-    document.getElementById('contents').innerHTML = '';
+    document.getElementById('container').innerHTML = '';
     for (let i = 0; i < data.length; i++) {
         let container = data[i].title + data[i].excerpt + data[i].path[0];
         if (container.toLowerCase().includes(term.toLowerCase())) {
@@ -441,11 +418,15 @@ function findArticle(term) {
         matches.reverse()
     }
     for(let i=0; i < matches.length; i++) {
-        document.getElementById('contents').appendChild(drawCard(matches[i]))
+        document.getElementById('container').appendChild(drawCard(matches[i]))
     }
     if (matches.length == 0) {
-        document.getElementById('contents').innerHTML = 'No results found'
+        let nonecontainer = document.createElement('div')
+        nonecontainer.className = 'notFound'
+        nonecontainer.innerHTML = 'No results found'
+        document.getElementById('container').appendChild(nonecontainer)
     }
+    document.getElementById('resuls').innerHTML = matches.length;
 }
 
 function arraysEqual(a, b) {
@@ -477,18 +458,54 @@ function findPath(path, createdPath, subdivision, finalPath, type) {
     }
 }
 
+function createTab(name, articles, active = false) {
+    let tab = document.createElement('div');
+    tab.className = 'tab';
+    if(active) {
+        tab.classList.add('active')
+    }
+    let tabhead = document.createElement('div');
+    tabhead.innerHTML = name;
+    tabhead.className = 'tabhead'
+    let tabjoin = document.createElement('div');
+    tabjoin.innerHTML = articles + ' articles';
+    tabjoin.className = 'tabjoin';
+    let cross = document.createElement('div')
+    cross.innerHTML = '×'
+    cross.className = 'cross'
+    tab.appendChild(tabhead)
+    tab.appendChild(tabjoin)
+    tab.appendChild(cross)
+
+    tab.onclick = () => {
+        let elements = document.getElementsByClassName('tab');
+        for(let i = 0; i < elements.length; i++) {
+            elements[i].classList.remove('active')
+        }
+        tab.classList.add('active')
+        tabfunction = name;
+        renderTabList()
+    }
+    return tab
+}
 function drawCard(data) {
+    let mainElement = document.createElement('div')
     let articleItem = document.createElement('div')
+    let colourItem = document.createElement('div')
+    colourItem.className = 'colouring'
+    colourItem.style.background = paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour
+    colourItem.innerHTML = paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].name[0];
+
     articleItem.innerHTML = `
-        <h2>${data.title}</h2>
-        ${(data.author) ? '<p style="color: gray">' + data.author + '</p>' : ''}
-        ${data.excerpt}
-        <div class='colour' style='background-color: ${paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour
-                    }'></div>
+        <div class='floater'>
+            <h1>${data.title}</h1>
+            ${(data.author) ? '<h4 style="color: gray; margin: 0px;">' + data.author + '</h4>' : ''}
+            ${data.excerpt}
+        </div>
+        
         `;
     articleItem.className = 'article'
     articleItem.tabIndex = '0'
-    articleItem.style.boxShadow = `10px 0px ${paths[findPath([data.path[0]], paths, 0, [], 'location')[0]].colour} inset`
     articleItem.onkeyup = (event) => {
         if (event.key == 'Enter') {
             currentPage = { url: data.url, title: data.title }
@@ -501,7 +518,13 @@ function drawCard(data) {
         currentPath = data.path
         changePage('article')
     }
-    return articleItem
+    colourItem.onclick = () => {
+        currentPath = data.path
+        changePage('list')
+    }
+    mainElement.appendChild(colourItem)
+    mainElement.appendChild(articleItem)
+    return mainElement
 }
 function calculatePercentage(listName) {
     let totalNumber = 0;
@@ -525,18 +548,34 @@ function calculatePercentage(listName) {
     }
     return (itemNumber / totalNumber)
 }
-
+function renderTabList(){
+    document.getElementById('mainlist').innerHTML = ''
+    if (tabfunction == 'Saved') {
+        for (let i = 0; i < saved.length; i++) {
+            for (let dat of data) {
+                if(saved[i] == dat.title) {
+                    document.getElementById('mainlist').appendChild(drawCard(dat));
+                }
+            }
+        }
+    } else if (tabfunction == 'Home') {
+        for (let i = 0; i < data.length; i++) {
+            document.getElementById('mainlist').appendChild(drawCard(data[i]));
+        }
+    }
+}
 function renderLists(path, popstate = false) {
     if (!popstate) {
         state.path = currentPath;
+        state.page = 'list'
         const url = new URL(location);
-        url.searchParams.set("l", "home");
+        url.searchParams.set("l", "list");
         url.searchParams.set("p", currentPath.join(','))
         history.pushState(state, "", url);
     }
 
     let list = [];
-    document.getElementById('extras').innerHTML = `<a onclick="resetURL(); changePage('home')">Home</a>`;
+    document.getElementById('extras').innerHTML = `<a onclick="resetURL(); changePage('list')">Home</a>`;
     for (let i = 0; i < currentPath.length; i++) {
         let between = document.createElement('span');
         between.innerHTML = ' / ';
@@ -574,7 +613,11 @@ function renderLists(path, popstate = false) {
     }
 
     if(!path && noCards == 0) {
-        document.getElementById('subjects').innerHTML = 'Error retreiving data: Maybe try refreshing the page?'
+        document.getElementById('subjects').innerHTML = ''
+        let nonecontainer = document.createElement('div')
+        nonecontainer.className = 'notFound'
+        nonecontainer.innerHTML = 'No articles found under this directory: Under construciton'
+        document.getElementById('subjects').appendChild(nonecontainer)
     }
 
     if (!path) return true
@@ -584,7 +627,6 @@ function renderLists(path, popstate = false) {
         let nestFile = document.createElement('div');
         nestFile.className = 'list'
         nestFile.tabIndex = '0'
-        nestFile.innerHTML = path[i].name;
 
         nestFile.onkeyup = (event) => {
             if (event.key == 'Enter') {
@@ -597,11 +639,17 @@ function renderLists(path, popstate = false) {
             renderLists(path[i].subs)
         }
 
-        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name) * (Math.min(window.innerWidth, 980) - 374) + 'px'
-        console.log(window.innerWidtha)
+        let clrWidth = calculatePercentage(currentPath.join(',') + ((currentPath.length > 0) ? ',' : '') + path[i].name)
         let clrHue = (path[i].colour) ? path[i].colour :
             paths[findPath(currentPath, paths, 0, [], 'location')[0]].colour
-        nestFile.style.boxShadow = 'inset 10px 0 ' + clrHue + ', inset ' + clrWidth + ' 0 rgba(154, 255, 140, 0.2)';
+        nestFile.style.boxShadow = 'inset ' + (clrWidth * (Math.min(window.innerWidth, 980) - 374)) + 'px 0 rgba(154, 255, 140, 0.2)';
+        let colourItem = document.createElement('div');
+        colourItem.style.background = clrHue;
+        colourItem.className = 'colouring';
+        let initial = paths[findPath(currentPath, paths, 0, [], 'location')[0]];
+        colourItem.innerHTML = (initial != undefined) ? initial.name[0] : path[i].name[0];
+        nestFile.appendChild(colourItem);
+        nestFile.innerHTML += path[i].name;
         document.getElementById('subjects').appendChild(nestFile)
     }
 }
@@ -611,8 +659,11 @@ let previousScreen = screen
 
 function changePage(newScene, popstate = false) {
     window.scrollTo(0, 0)
+    window.contents.innerHTML = ''
+
     if (!popstate) {
         state.page = newScene;
+        console.log(state.page)
         const url = new URL(location);
         url.searchParams.set('l', newScene);
         if (newScene == 'search') {
@@ -623,6 +674,9 @@ function changePage(newScene, popstate = false) {
             console.log(currentPage)
             url.searchParams.set('p', currentPath.join(','))
             url.searchParams.set('n', currentPage.url + ',' + currentPage.title)
+        } else if (newScene == 'list') {
+            state.path = currentPath
+            url.searchParams.set('p', currentPath.join(','))
         } else {
             state.path = []
             state.current = []
@@ -630,7 +684,6 @@ function changePage(newScene, popstate = false) {
         history.pushState(state, null, url);
     }
     if (html[newScene] && html[newScene].url) {
-        window.container.innerHTML = `<div class="loading"></div>`
         fetch('https://flippont.github.io/redact/src/components/' + html[newScene].url + '.html')
             .then((response) => response.text())
             .then((text) => {
@@ -670,6 +723,7 @@ window.onpopstate = (event) => {
     if (state.page == 'article') {
         currentPage = state.current
     }
+    console.log(state.path, state.page)
     if (state.page == 'home') {
         currentPath = []
     } else if (state.path.length > 1 && state.page != 'article') {
@@ -678,4 +732,9 @@ window.onpopstate = (event) => {
         currentPath = state.path
     }
     changePage(state.page, true)
+}
+window.search.onkeydown = (event) => {
+    if (event.key == 'Enter') {
+        changePage('search')
+    }
 }
