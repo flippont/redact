@@ -134,7 +134,7 @@
         "level": 1,
         "url": "chaite",
         "test": true,
-        "excerpt": "In Irish, the past tense, or 'Aimsir Chaite,' reflects actions that have already occurred."
+        "excerpt": "Test yourself on the Past Tense in Irish."
     },
     {
         "title": "An Aimsir Láithreach (The Present Tense)",
@@ -182,6 +182,14 @@
         "title": "Na Briathra neamhrialta (Irregular Verbs)",
         "path": ["Irish", "Grammar"],
         "level": 1,
+        "url": "irregular",
+        "excerpt": "There are 11 irregular verbs to remember in Irish, which change the root depending on the tense."
+    },
+    {
+        "title": "Quiz: Na Briathra neamhrialta (Irregular Verbs)",
+        "path": ["Irish", "Grammar"],
+        "level": 1,
+        "type": "Quiz",
         "url": "irregular",
         "excerpt": "There are 11 irregular verbs to remember in Irish, which change the root depending on the tense."
     },
