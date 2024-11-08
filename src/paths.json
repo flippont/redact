@@ -1,6 +1,6 @@
 [
     {
-        "name": "English",
+        "name": "Grammar",
         "colour": "#ef476f",
         "subs": [
             { "name": "Poetry" },
@@ -11,8 +11,8 @@
         ]
     },
     {
-    "name": "Irish",
-    "colour": "#FFD32E",
+    "name": "Vocabulary",
+    "colour": "#f8961e",
     "subs": [
         { "name": "Literature" },
         { "name": "Grammar" },
@@ -21,7 +21,35 @@
     ]
     },
     {
-    "name": "Maths",
+    "name": "Prose",
+    "colour": "#FFD32E",
+    "subs": [
+        { "name": "Erosion" },
+        { "name": "Urbanisation" },
+        { "name": "Plate Techtonics" },
+        { "name": "Rocks" }
+    ]
+    },
+    {
+    "name": "Writing",
+    "colour": "#90be6d"
+    },
+    {
+    "name": "Aural",
+    "colour": "#06d6a0",
+    "subs": [
+        { "name": "Literature" },
+        { "name": "Grammar" },
+        { "name": "Writing" },
+        { "name": "Vocabulary" }
+    ]
+    },
+    {
+    "name": "Film",
+    "colour": "#577590"
+    },
+    {
+    "name": "Sraith Pictiúr",
     "colour": "#1b9aaa",
     "subs": [
         { "name": "Basics" },
@@ -35,73 +63,11 @@
     ]
     },
     {
-    "name": "Science",
-    "colour": "#90be6d",
-    "subs": [
-        { "name": "Physics" },
-        { "name": "Chemistry" },
-        { "name": "Biology" },
-        { "name": "Space" }
-    ]
-    },
-    {
-    "name": "Geography",
-    "colour": "#06d6a0",
-    "subs": [
-        { "name": "Erosion" },
-        { "name": "Urbanisation" },
-        { "name": "Plate Techtonics" },
-        { "name": "Rocks" }
-    ]
-    },
-    {
-    "name": "History",
-    "colour": "#f8961e"
-    },
-    {
-    "name": "French",
+    "name": "Poetry",
     "colour": "#f15bb5",
     "subs": [
-        { "name": "Literature" },
-        { "name": "Grammar" },
-        { "name": "Writing" },
-        { "name": "Vocabulary" }
-    ]
-    },
-    {
-    "name": "Technical Graphics",
-    "colour": "#577590"
-    },
-    {
-    "name": "Extra Curricular Activities",
-    "colour": "#800080",
-    "subs": [
-        {
-        "name": "MUN",
-        "subs": [
-            { "name": "Rules" },
-            { "name": "Resolutions" },
-            { "name": "Tools" }
-        ]
-        },
-        {
-        "name": "Chess",
-        "subs": [
-            { "name": "Rules" },
-            { "name": "Openings" },
-            { "name": "Puzzles" }
-        ]
-        },
-        { "name": "Lego" },
-        {
-        "name": "Go / Baduk",
-        "subs": [
-            { "name": "Rules" },
-            { "name": "Jyoseki" },
-            { "name": "Fuseki" },
-            { "name": "Puzzles" }
-        ]
-        }
+        { "name": "Poetry" },
+        { "name": "Prose" }
     ]
     },
     {
