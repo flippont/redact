@@ -1,34 +1,15 @@
 [
     {
-        "name": "Grammar",
-        "colour": "#ef476f",
-        "subs": [
-            { "name": "Poetry" },
-            { "name": "Literature" },
-            { "name": "Drama" },
-            { "name": "Films" },
-            { "name": "Creative Writing" }
-        ]
+    "name": "Grammar",
+    "colour": "#ef476f"
     },
     {
     "name": "Vocabulary",
-    "colour": "#f8961e",
-    "subs": [
-        { "name": "Literature" },
-        { "name": "Grammar" },
-        { "name": "Writing" },
-        { "name": "Vocabulary" }
-    ]
+    "colour": "#f8961e"
     },
     {
     "name": "Prose",
-    "colour": "#FFD32E",
-    "subs": [
-        { "name": "Erosion" },
-        { "name": "Urbanisation" },
-        { "name": "Plate Techtonics" },
-        { "name": "Rocks" }
-    ]
+    "colour": "#FFD32E"
     },
     {
     "name": "Writing",
@@ -36,13 +17,7 @@
     },
     {
     "name": "Aural",
-    "colour": "#06d6a0",
-    "subs": [
-        { "name": "Literature" },
-        { "name": "Grammar" },
-        { "name": "Writing" },
-        { "name": "Vocabulary" }
-    ]
+    "colour": "#06d6a0"
     },
     {
     "name": "Film",
@@ -50,32 +25,14 @@
     },
     {
     "name": "Sraith Pictiúr",
-    "colour": "#1b9aaa",
-    "subs": [
-        { "name": "Basics" },
-        { "name": "Trigonometry" },
-        { "name": "Algebra" },
-        { "name": "Sets" },
-        { "name": "Functions" },
-        { "name": "Geometry" },
-        { "name": "Taxes" },
-        { "name": "CBA 1" }
-    ]
+    "colour": "#1b9aaa"
     },
     {
     "name": "Poetry",
-    "colour": "#f15bb5",
-    "subs": [
-        { "name": "Poetry" },
-        { "name": "Prose" }
-    ]
+    "colour": "#f15bb5"
     },
     {
     "name": "Other",
-    "colour": "#000000",
-    "subs": [
-        { "name": "Geo Studies" },
-        { "name": "Chinese" }
-    ]
+    "colour": "#000000"
     }
 ]
