@@ -1,11 +1,29 @@
-<h2>Articles you starred</h2>
-<div id="starred">
+<div class="searchcont">
+    <input type="text" id="bigsearch">
+    <button class="bigsearch" onclick="document.getElementById('search').value = document.getElementById('bigsearch').value; changePage('search')">Search</button>
+    <p class="advice">Search for an article or topic in either English or Irish</p>
 </div>
-
-<h2>5 random articles</h2>
-<div id="recent">
+<div class="sidebar right">
+    <h2>Font Size</h2>
+    <input type="radio" id="smallfont" name="font_size" value="small">
+    <label for="smallfont">Small</label><br>
+    <input type="radio" id="mediumfont" name="font_size" value="medium">
+    <label for="mediumfont">Medium</label><br>
+    <input type="radio" id="largefont" name="font_size" value="large">
+    <label for="largefont">Large</label>
 </div>
-
-<h2>Recently added articles</h2>
-<div id="favs">
+<div class="mained left">
+    <div class="desc">
+        <h2>Starred Articles</h2>
+        <div class="starred" id="starred">
+        </div>
+    </div>
+</div>
+<div class="desc">
+    <h1>Welcome</h1>
+    <p>
+        Welcome to the on line learning resource for Irish (in beta). </br>
+        The aim of the site is to provide users of the language with free, easy-to-use access to notes, explanations and demonstrations to do with learning the Irish language. Designed for use by students.</br>
+        <a onclick="changePage('articles')">Get the full list of the articles</a>
+    </p>
 </div>
